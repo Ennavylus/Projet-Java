@@ -1,0 +1,50 @@
+Projet java 
+
+Indroduction
+
+    Mon projet sera un jeux de style jeux de carte en multijoueur( 1 a 4 joueur)
+l'utilisateur pour jouer contre une IA ou d'autre joueur 
+
+
+
+Language utiliser
+
+    le projet sera coder en java/javaFX avec une base de donnée MySQL
+
+    le java/javaFX pour le jeux, le serveur et client
+    et la base de donnee afin d'avoir un historique de victoire et de defaite, le joueur gagnant ainsi que le nom du ou des 
+    joueurs de la partie
+    
+
+presentation du jeux
+
+   Principe du jeux 
+
+    Le jeu est composé de 55 cartes (11 couleurs *5 cartes) et de 11 figurines de couleur (correspondant au 11 couleur des carte)
+
+    Les 11 figurines son disposées au milieu de la table
+    on distribue a chaque joueur 5 cartes, et 5 carte sont ecarter du jeux,
+
+    Le but du jeux est de recuper le maximum de figurine,
+
+    Pour récupérer une figurine il faut jouer une carte de la couleur correspondante, la figurine est ensuite placer devant le joueur,
+    Il peut également tenter de récupérer une figurine qui appartient déjà à un autre joueur, 
+    Ce joueur en question a la possibilité de contrer l'action en jouant lui-même une carte de la même couleur en réponse, 
+    À la fin de chaque tour on reproche le nombre de carte jouer pendant le tour de jeux
+
+    Le jeu se joue chacun son tour jusqu'à ce qu'il n'y ait plus la possibilité de jouer de carte, 
+     on comptabilise ensuite le nombre de figurine devant chaque joueurs
+
+
+
+presentation des etape de developement 
+
+    - Realisation de la maquette tu plateau de jeux
+    - Realistation du MCD  de la base de donnée
+    - Conception du programe
+        
+        La Conception du programe va ce derouler en plusieur etape
+            - Creation d'un mode Joueur VS IA
+            - Mise en place d'un mode joueur VS joueur
+            - Mise en place de Joueur VS plusieur joueurs
+
