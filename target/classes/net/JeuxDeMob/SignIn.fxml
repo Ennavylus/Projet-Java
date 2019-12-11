@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.SignInController">
+   <children>
+      <ImageView fitHeight="688.0" fitWidth="917.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@backGround/fondLog.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="258.0" layoutY="41.0" prefHeight="624.0" prefWidth="430.0">
+         <children>
+            <ImageView fitHeight="543.0" fitWidth="396.0" layoutX="17.0" layoutY="41.0" opacity="0.8" pickOnBounds="true">
+               <image>
+                  <Image url="@backGround/Contenerblanc.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="inscription" layoutX="67.0" layoutY="508.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="annuler" layoutX="262.0" layoutY="508.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="23.0" />
+               </font>
+            </Button>
+            <Label layoutX="83.0" layoutY="170.0" prefHeight="30.0" prefWidth="226.0" text="Veuillez saisir votre adresse email :">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="244.0" prefHeight="30.0" prefWidth="226.0" text="Veuillez saisir un Pseudo :">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="340.0" prefHeight="30.0" prefWidth="226.0" text="Veuillez un mot de passe :">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="402.0" prefHeight="30.0" prefWidth="226.0" text="Confirmation mot de passe :">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="124.0" layoutY="88.0" prefHeight="30.0" prefWidth="226.0" text="Inscription">
+               <font>
+                  <Font name="Haettenschweiler" size="53.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mail" layoutX="83.0" layoutY="200.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <TextField fx:id="pseudo" layoutX="83.0" layoutY="274.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <PasswordField fx:id="password" layoutX="83.0" layoutY="371.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <PasswordField fx:id="passwordConfirm" layoutX="83.0" layoutY="432.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <Label fx:id="errorPass" layoutX="83.0" layoutY="470.0" prefHeight="30.0" prefWidth="226.0" textFill="RED">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorPseudo" layoutX="83.0" layoutY="304.0" prefHeight="30.0" prefWidth="226.0" textFill="RED">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
