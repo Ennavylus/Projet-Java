@@ -14,7 +14,7 @@ public class DataBase {
 	    String user = "root", pswd = "56421988";
 		try {
 			cnx = DriverManager.getConnection(url,user,pswd);
-			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp) VALUE(?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil) VALUE(?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			updateStatement = cnx.prepareStatement("UPDATE task SET task=? WHERE id=?");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,9 +56,12 @@ public class DataBase {
 		
 	}
 	
-	public Player insertTodo(String pseudo) {
+	public Player insertUtilisateur(String pseudo, String mail, String mdp) {
 		try {
 			insertStatement.setString(1, pseudo);
+			insertStatement.setString(2, mail);
+			insertStatement.setString(3, mdp);
+			insertStatement.setString(4, "prof.png");
 			int inserted = insertStatement.executeUpdate();
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {

@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 
 public class LogInController {
 
+	static Integer id;
+	
 	@FXML
 	Button logIn;
 	
@@ -34,21 +36,26 @@ public class LogInController {
 	}
 	
 	public void goLogIn() throws IOException {
+		error.setText(null);
 		String pseudolog = pseudo.getText();
 		String passLog = password.getText();
 		var db= DataBase.getInstance();
-		String request = "SELECT pseudo, mdp FROM utilisateur where pseudo='"+pseudolog+"';";
+		String request = "SELECT id, pseudo, mdp FROM utilisateur where pseudo='"+pseudolog+"';";
 		ResultSet res = db.query(request);
 		try {
-			res.next();
+
+			if(!res.next()) {
+				error.setText("Pseudo inconnu");
+				return;
+			}
 			System.out.println("merci momo");
 			String verif = res.getString("mdp");
 			if(verif.equals(passLog)) {
+				id= res.getInt("id");
 				App.setRoot("InterfaceUser");
 			}
 			else {
-				System.out.println(" no !!!");
-				error.setText("Mot de passe ou Pseudo incorect");
+				error.setText("Mot de passe incorect");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

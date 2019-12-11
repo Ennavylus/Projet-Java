@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.InterfaceUserController">
    <children>
       <ImageView fitHeight="688.0" fitWidth="917.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,41 +22,52 @@
                   <Image url="@backGround/Contenerblanc.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="95.0" fitWidth="97.0" layoutX="268.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@prof.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="102.0" layoutY="94.0" prefHeight="94.0" prefWidth="170.0" text="Pseudo">
+            <ImageView fx:id="faceProfil" fitHeight="95.0" fitWidth="97.0" layoutX="268.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="pseudo" layoutX="102.0" layoutY="94.0" prefHeight="94.0" prefWidth="170.0">
                <font>
                   <Font name="Roboto Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="110.0" layoutY="241.0" prefHeight="44.0" prefWidth="247.0" text="Nombre partie jouée : ">
+            <Label layoutX="110.0" layoutY="241.0" prefHeight="44.0" prefWidth="170.0" text="Nombre partie jouée : ">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="121.0" layoutY="293.0" prefHeight="44.0" prefWidth="143.0" text="victoire : ">
+            <Label layoutX="121.0" layoutY="292.0" prefHeight="44.0" prefWidth="73.0" text="victoire : ">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="121.0" layoutY="335.0" prefHeight="44.0" prefWidth="145.0" text="défaites  : ">
+            <Label layoutX="121.0" layoutY="335.0" prefHeight="44.0" prefWidth="82.0" text="défaites  : ">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
                </font>
             </Label>
-            <Button layoutX="115.0" layoutY="384.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="99.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 14; -fx-font-weight: bold;" text="Réinitialiser" textFill="WHITE">
+            <Button fx:id="clear" layoutX="115.0" layoutY="384.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="99.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 14; -fx-font-weight: bold;" text="Réinitialiser" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Button layoutX="251.0" layoutY="448.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="128.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" text="modifier profil" textFill="WHITE">
+            <Button fx:id="modify" layoutX="251.0" layoutY="448.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="128.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" text="modifier profil" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
+            <Label fx:id="nbPlayed" layoutX="283.0" layoutY="241.0" prefHeight="44.0" prefWidth="48.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="nbWin" layoutX="203.0" layoutY="292.0" prefHeight="44.0" prefWidth="48.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="nbLoose" layoutX="203.0" layoutY="335.0" prefHeight="44.0" prefWidth="48.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="524.0" layoutY="393.0" prefHeight="262.0" prefWidth="360.0">
@@ -72,8 +82,8 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <ChoiceBox layoutX="105.0" layoutY="113.0" prefHeight="26.0" prefWidth="212.0" />
-            <ChoiceBox layoutX="255.0" layoutY="160.0" prefHeight="26.0" prefWidth="61.0" />
+            <ChoiceBox fx:id="gameMod" layoutX="105.0" layoutY="113.0" prefHeight="26.0" prefWidth="212.0" />
+            <ChoiceBox fx:id="nbPlayers" layoutX="255.0" layoutY="160.0" prefHeight="26.0" prefWidth="61.0" />
             <Label layoutX="110.0" layoutY="157.0" prefHeight="30.0" prefWidth="134.0" text="Nombre joueur  : ">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
@@ -86,7 +96,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button layoutX="724.0" layoutY="37.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Deconnexion" textFill="WHITE">
+      <Button fx:id="disconnect" layoutX="724.0" layoutY="37.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Deconnexion" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>

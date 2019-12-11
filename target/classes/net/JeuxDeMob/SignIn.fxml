@@ -23,12 +23,12 @@
                   <Image url="@backGround/Contenerblanc.png" />
                </image>
             </ImageView>
-            <Button fx:id="inscription" layoutX="67.0" layoutY="508.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE">
+            <Button fx:id="inscription" layoutX="67.0" layoutY="508.0" mnemonicParsing="false" onAction="#valideInscription" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="annuler" layoutX="262.0" layoutY="508.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Annuler" textFill="WHITE">
+            <Button fx:id="annuler" layoutX="262.0" layoutY="508.0" mnemonicParsing="false" onAction="#returnLogIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Annuler" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="23.0" />
                </font>
@@ -38,7 +38,7 @@
                   <Font name="Roboto Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="83.0" layoutY="244.0" prefHeight="30.0" prefWidth="226.0" text="Veuillez saisir un Pseudo :">
+            <Label layoutX="83.0" layoutY="262.0" prefHeight="30.0" prefWidth="226.0" text="Veuillez saisir un Pseudo :">
                <font>
                   <Font name="Roboto Bold" size="14.0" />
                </font>
@@ -59,15 +59,20 @@
                </font>
             </Label>
             <TextField fx:id="mail" layoutX="83.0" layoutY="200.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
-            <TextField fx:id="pseudo" layoutX="83.0" layoutY="274.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <TextField fx:id="pseudo" layoutX="83.0" layoutY="292.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
             <PasswordField fx:id="password" layoutX="83.0" layoutY="371.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
             <PasswordField fx:id="passwordConfirm" layoutX="83.0" layoutY="432.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
-            <Label fx:id="errorPass" layoutX="83.0" layoutY="470.0" prefHeight="30.0" prefWidth="226.0" textFill="RED">
+            <Label fx:id="errorPseudo" layoutX="83.0" layoutY="322.0" prefHeight="20.0" prefWidth="226.0" textFill="RED">
                <font>
                   <Font name="Roboto Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="errorPseudo" layoutX="83.0" layoutY="304.0" prefHeight="30.0" prefWidth="226.0" textFill="RED">
+            <Label fx:id="errorMail" layoutX="83.0" layoutY="230.0" prefHeight="20.0" prefWidth="226.0" textFill="RED">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorPass" layoutX="83.0" layoutY="462.0" prefHeight="20.0" prefWidth="226.0" textFill="RED">
                <font>
                   <Font name="Roboto Bold" size="14.0" />
                </font>
