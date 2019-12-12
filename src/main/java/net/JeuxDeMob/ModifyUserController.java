@@ -1,6 +1,14 @@
 package net.JeuxDeMob;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.*;
 import javafx.beans.property.*;
 import javafx.event.*;
@@ -8,6 +16,8 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.*;
 
 public class ModifyUserController {
 	@FXML ImageView faceProfil;
@@ -29,6 +39,8 @@ public class ModifyUserController {
 	private ResultSet res;
 	protected StringProperty view;
 	private TextField tamp;
+	private File url;
+	private String urlProf;
 	
 	public void initialize(){
 		 res = DataBase.getInstance().query("SELECT pseudo,mail,mdp, urlProfil FROM utilisateur where id="+LogInController.id+";");
@@ -42,7 +54,7 @@ public class ModifyUserController {
 			view.set(res.getString("pseudo"));
 			pseudo.setText(view.get());
 			pseudo.setOpacity(0.5);
-			
+			urlProf= res.getString("urlProfil");
 			faceProfil.setImage(new Image(getClass().getResourceAsStream(res.getString("urlProfil"))));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,7 +66,6 @@ public class ModifyUserController {
 	
 	public void mousseClickedPass(MouseEvent e) {
 		PasswordField test = (PasswordField) e.getSource();
-		System.out.println(tamp);
 		if(test.getId()!=pseudo.getId()||test.getId()!=mail.getId()) {
 			try {
 				if(tamp==null)return;
@@ -75,7 +86,6 @@ public class ModifyUserController {
 	}
 	public void mouseClickedMail(MouseEvent e) throws SQLException {
 		TextField test = (TextField) e.getSource();
-		System.out.println(!test.getText().equals(res.getString(test.getId())));
 		if(!test.getText().equals(res.getString(test.getId()))) {
 			if(tamp!=null ) {
 				System.out.println("1"+tamp.getText());
@@ -117,38 +127,82 @@ public class ModifyUserController {
 		String passLog = password.getText();
 		String passConf = passwordConfirm.getText();
 
-		ResultSet res = DataBase.getInstance().query("SELECT mail FROM utilisateur where mail='"+email+"';");
+		ResultSet res2 = DataBase.getInstance().query("SELECT mail FROM utilisateur where mail='"+email+"';");
 		int count=0;
 		try {
-			if(res.next()) {
-				count++;
-				errorMail.setText("Email non valide ou deja enregistré ");
+			if(!email.equals(res.getString("mail"))) {
+				if(res2.next()) {
+					count++;
+					errorMail.setText("Email non valide ou deja enregistré ");
+				}
 			}
+
 			ResultSet res1 = DataBase.getInstance().query("SELECT pseudo FROM utilisateur where pseudo='"+pseudoLog+"';");
-			
-			if(res1.next()) {
-				count++;
-				errorPseudo.setText("Pseudo deja utilisé ");
-			}			
-			if(!passLog.equals(passConf)) {
+			if(!pseudoLog.equals(res.getString("pseudo"))){
+				if(res1.next()) {
+					count++;
+					errorPseudo.setText("Pseudo deja utilisé ");
+				}		
+			}
+		
+			if(passLog!=null) {
+				if(!passLog.equals(passConf)) {
 				count++;
 				errorPass.setText("Mot de passe non identique");
 			}
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	
 	if(count==0) {
-		
 		try {
+			if(email.equals(res.getString("mail"))||email.length()<1)email = res.getString("mail");
+			if(pseudoLog.equals(res.getString("pseudo"))||pseudoLog.length()<1)pseudoLog = res.getString("pseudo");
+			if(passLog.equals(res.getString("mdp"))||passLog.length()<1)passLog = res.getString("mdp");
+			
+			if(this.updateProfil()) urlProf = "prof/profilid"+LogInController.id+".jpg";
+			DataBase.getInstance().updateMe(pseudoLog, email, passLog, urlProf);
+			
 			App.setRoot("InterfaceUser");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+	
+		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 	}
 
 	}
-	
+	public void changeProfil() {
+		FileChooser fileChooser = new FileChooser();
+		 fileChooser.setTitle("Trouve une image de profil");
+		 fileChooser.getExtensionFilters().add(
+		         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+		url = fileChooser.showOpenDialog(null);
+       
+	}
 
+	public boolean updateProfil() {
+			FileInputStream fis= null;
+	        FileOutputStream fos = null;
+	        if(url==null)return false;
+	        try {
+	        	 fis = new FileInputStream(url);
+	        	 fos = new FileOutputStream("C:\\Users\\ennav\\OneDrive\\Bureau\\WorkSpace\\JeuxProjetJava\\JeuxDeMob\\src\\main\\resources\\net\\JeuxDeMob\\prof\\profilid"+LogInController.id+".jpg") ;
+	        	 BufferedInputStream bis = new BufferedInputStream(fis);
+	        	 BufferedOutputStream bos = new BufferedOutputStream(fos);
+	        	 int b=0;
+	        	 while (b!= -1) {
+	            	b=bis.read();
+	            	bos.write(b);
+	        	 }
+	            	bis.close();
+					bos.close();
+					return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			} 
+	}
 }

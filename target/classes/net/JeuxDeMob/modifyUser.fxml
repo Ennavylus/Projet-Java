@@ -67,7 +67,7 @@
                   <Font name="Roboto Bold" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="changeAvatar" layoutX="287.0" layoutY="155.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 10; -fx-font-weight: bold;" text="Changer avatar" textFill="WHITE">
+            <Button fx:id="changeAvatar" layoutX="287.0" layoutY="155.0" mnemonicParsing="false" onAction="#changeProfil" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 10; -fx-font-weight: bold;" text="Changer avatar" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>

@@ -58,9 +58,6 @@ public class InterfaceUserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 	
 	public void goDisconnect() throws IOException {

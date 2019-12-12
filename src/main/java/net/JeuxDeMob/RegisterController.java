@@ -8,7 +8,7 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 
 
-public class SignInController {
+public class RegisterController {
 	@FXML
 	Button inscription;
 	
