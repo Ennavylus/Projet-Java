@@ -10,6 +10,11 @@ import javafx.scene.control.*;
 public class LogInController {
 
 	static Integer id;
+	@FXML
+	TextField pseudo;
+	
+	@FXML
+	PasswordField password;
 	
 	@FXML
 	Button logIn;
@@ -17,12 +22,7 @@ public class LogInController {
 	@FXML
 	Button signIn;
 	
-	@FXML
-	TextField pseudo;
-	
-	@FXML
-	PasswordField password;
-	
+
 	@FXML
 	Label error;
 	
@@ -48,10 +48,10 @@ public class LogInController {
 				error.setText("Pseudo inconnu");
 				return;
 			}
-			System.out.println("merci momo");
 			String verif = res.getString("mdp");
 			if(verif.equals(passLog)) {
 				id= res.getInt("id");
+				System.out.println("merci momo");
 				App.setRoot("InterfaceUser");
 			}
 			else {

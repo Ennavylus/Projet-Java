@@ -3,6 +3,7 @@ module net.JeuxDeMob {
     requires javafx.fxml;
 	requires javafx.graphics;
 	requires java.sql;
+	requires javafx.base;
 
     opens net.JeuxDeMob to javafx.fxml;
     exports net.JeuxDeMob;

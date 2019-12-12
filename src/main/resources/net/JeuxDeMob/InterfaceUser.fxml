@@ -43,12 +43,12 @@
                   <Font name="Roboto Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="clear" layoutX="115.0" layoutY="384.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="99.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 14; -fx-font-weight: bold;" text="Réinitialiser" textFill="WHITE">
+            <Button fx:id="clear" layoutX="115.0" layoutY="384.0" mnemonicParsing="false" onAction="#goClear" prefHeight="20.0" prefWidth="99.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 14; -fx-font-weight: bold;" text="Réinitialiser" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Button fx:id="modify" layoutX="251.0" layoutY="448.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="128.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" text="modifier profil" textFill="WHITE">
+            <Button fx:id="modify" layoutX="251.0" layoutY="448.0" mnemonicParsing="false" onAction="#goModify" prefHeight="33.0" prefWidth="128.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" text="modifier profil" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
@@ -96,7 +96,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="disconnect" layoutX="724.0" layoutY="37.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Deconnexion" textFill="WHITE">
+      <Button fx:id="disconnect" layoutX="724.0" layoutY="37.0" mnemonicParsing="false" onAction="#goDisconnect" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Deconnexion" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>

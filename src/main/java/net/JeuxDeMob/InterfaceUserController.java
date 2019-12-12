@@ -3,13 +3,16 @@ package net.JeuxDeMob;
 
 import java.io.IOException;
 import java.sql.*;
-
+import javafx.beans.property.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 
 public class InterfaceUserController {
-
+	private ResultSet res;
+	protected IntegerProperty nbPlay;
+	protected IntegerProperty nbW;
+	protected IntegerProperty nbL;
 	@FXML
 	Button clear;
 	@FXML
@@ -27,25 +30,29 @@ public class InterfaceUserController {
 	@FXML
 	ImageView faceProfil;
 	@FXML
-	ChoiceBox<String> gameMod;
+	ChoiceBox gameMod;
 	@FXML
-	ChoiceBox<Integer> nbPlayers;
+	ChoiceBox nbPlayers;
 	public void initialize(){
 		var db= DataBase.getInstance();
-		ResultSet res = db.query("SELECT pseudo, nbPartie,Victoire,defaite,urlProfil FROM utilisateur as U JOIN historique as H ON U.id = H.id_utilisateur where U.id="+LogInController.id+";");
+		res = db.query("SELECT pseudo, nbPartie,Victoire,defaite,urlProfil FROM utilisateur as U LEFT JOIN historique as H ON U.id = H.id_utilisateur where U.id="+LogInController.id+";");
 		try {
-			if(res.next()) {
-				// App.setRoot("LogIn");
+			res.next();
+			this.nbPlay = new SimpleIntegerProperty(res.getInt("nbPartie"));
+			this.nbW = new SimpleIntegerProperty(res.getInt("victoire"));
+			this.nbL = new SimpleIntegerProperty(res.getInt("defaite"));
+			if(nbPlay==null) {
+				nbPlay.set(0);nbW.set(0);nbL.set(0);
 			}
-	
+			
+			System.out.println(LogInController.id);
 			pseudo.setText(res.getString("pseudo"));
-			nbPlayed.setText(res.getString("nbPartie"));
-			nbWin.setText(res.getString("victoire"));
-			nbLoose.setText(res.getString("defaite"));
-		
-			
-			faceProfil.setImage(new Image(getClass().getResourceAsStream("prof/enna.png")));
-			
+			nbPlayed.setText(""+nbPlay.get());
+			nbWin.setText(""+nbW.get());
+			nbLoose.setText(""+nbL.get());
+			faceProfil.setImage(new Image(getClass().getResourceAsStream(res.getString("urlProfil"))));
+			nbPlayers.getItems().addAll(1,2,3);
+			gameMod.getItems().addAll("Partie contre ordinateur","Joueur contre Joueur");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,8 +70,14 @@ public class InterfaceUserController {
 		 App.setRoot("modifyUser");
 	}
 	public void goClear() {
-		
+		if(DataBase.getInstance().clearStat()) {
+			nbPlay.set(0);
+			nbPlayed.setText(""+nbPlay.get());
+			nbWin.setText(""+nbPlay.get());
+			nbLoose.setText(""+nbPlay.get());
+		}
 	}
-	
-	
 }
+	
+	
+

@@ -14,18 +14,14 @@ public class SignInController {
 	
 	@FXML
 	Button annuler;
-	
 	@FXML
 	TextField pseudo;
-	
 	@FXML
 	TextField mail;
-	
 	@FXML
 	PasswordField password;
 	@FXML
 	PasswordField passwordConfirm;
-	
 	@FXML
 	Label errorPseudo;
 	@FXML

@@ -58,10 +58,10 @@
                   <Font name="Haettenschweiler" size="53.0" />
                </font>
             </Label>
-            <TextField fx:id="mail" layoutX="83.0" layoutY="200.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
-            <TextField fx:id="pseudo" layoutX="83.0" layoutY="292.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-image-width: 2; -fx-border-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
-            <PasswordField fx:id="password" layoutX="83.0" layoutY="371.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
-            <PasswordField fx:id="passwordConfirm" layoutX="83.0" layoutY="432.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-image-width: 2; -fx-opacity: 0.4; -fx-border-radius: 5;" />
+            <TextField fx:id="mail" layoutX="83.0" layoutY="200.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-image-width: 2; -fx-border-width: 2; -fx-border-radius: 5;" />
+            <TextField fx:id="pseudo" layoutX="83.0" layoutY="292.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-image-width: 2; -fx-border-width: 2; -fx-border-radius: 5;" />
+            <PasswordField fx:id="password" layoutX="83.0" layoutY="371.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-width: 2; -fx-border-image-width: 2; -fx-border-radius: 5;" />
+            <PasswordField fx:id="passwordConfirm" layoutX="83.0" layoutY="432.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-width: 2; -fx-border-image-width: 2; -fx-border-radius: 5;" />
             <Label fx:id="errorPseudo" layoutX="83.0" layoutY="322.0" prefHeight="20.0" prefWidth="226.0" textFill="RED">
                <font>
                   <Font name="Roboto Bold" size="14.0" />

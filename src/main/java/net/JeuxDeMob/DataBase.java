@@ -6,16 +6,19 @@ public class DataBase {
 	static private DataBase instance;
 	Connection cnx;
 	// PreparedStatement  for player insert
-	private PreparedStatement  insertStatement;
-	private PreparedStatement  updateStatement;
+	private PreparedStatement insertStatement;
+	private PreparedStatement updateStatement;
+	private PreparedStatement deleteStatement;
+	
 	
 	private DataBase() {
 		String url = "jdbc:mysql://localhost/jeuxdumob?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	    String user = "root", pswd = "56421988";
 		try {
 			cnx = DriverManager.getConnection(url,user,pswd);
-			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil) VALUE(?,?,?)",Statement.RETURN_GENERATED_KEYS);
-			updateStatement = cnx.prepareStatement("UPDATE task SET task=? WHERE id=?");
+			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil) VALUE(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			updateStatement = cnx.prepareStatement("UPDATE Utilisateur SET Pseudo=?, mail = ?, mdp = ?, urlProfil = ? WHERE id=?");
+			deleteStatement = cnx.prepareStatement("DELETE FROM ? WHERE ?=?");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -61,7 +64,7 @@ public class DataBase {
 			insertStatement.setString(1, pseudo);
 			insertStatement.setString(2, mail);
 			insertStatement.setString(3, mdp);
-			insertStatement.setString(4, "prof.png");
+			insertStatement.setString(4, "prof/prof.png");
 			int inserted = insertStatement.executeUpdate();
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {
@@ -73,17 +76,37 @@ public class DataBase {
 		}
 		return null;
 	}
+	
+	public boolean clearStat() {
+		try {
+			deleteStatement.executeUpdate("DELETE FROM Historique WHERE id_utilisateur ="+LogInController.id+";");
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public void deleteUser(int id) {
+		try {
+			deleteStatement = cnx.prepareStatement("DELETE FROM Utilisateur WHERE id="+id+";");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateMe(String pseudo, String mail, String mdp, String url) {
+		try {
+			updateStatement.setString(1, pseudo );
+			updateStatement.setString(2, mail);
+			updateStatement.setString(3, mdp);
+			updateStatement.setString(4, url);
+			updateStatement.executeUpdate();
+		} catch (SQLException e) {
 
-//	public void updatePlayer(Player player) {
-//		try {
-//			updateStatement.setString(1, todo.getTask());
-//			updateStatement.setInt(2, todo.getId());
-//			updateStatement.executeUpdate();
-//		} catch (SQLException e) {
-//
-//			e.printStackTrace();
-//		}
-//	}
+			e.printStackTrace();
+		}
+	}
 }
 
 
