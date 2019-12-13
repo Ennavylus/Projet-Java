@@ -8,10 +8,12 @@ public class Card extends ImageView {
 	private String name;
 	
 	
-	public Card(String url) {
+	public Card(String url, String name) {
 		this.setImage(new Image(url));
+		this.setName(name);
 		
 	}
+
 
 
 	public String getUrl() {
@@ -21,6 +23,18 @@ public class Card extends ImageView {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 		

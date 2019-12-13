@@ -25,7 +25,7 @@
             </ImageView>
             <TextField fx:id="pseudo" layoutX="26.0" layoutY="54.0" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-image-width: 2; -fx-border-width: 2; -fx-border-radius: 5;" />
             <PasswordField fx:id="password" layoutX="26.0" layoutY="119.0" prefHeight="29.0" prefWidth="179.0" style="-fx-border-color: grey; -fx-border-width: 2; -fx-border-image-width: 2; -fx-border-radius: 5;" />
-            <Button fx:id="logIn" layoutX="116.0" layoutY="193.0" mnemonicParsing="false" onAction="#goLogIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Connection">
+            <Button fx:id="logIn" layoutX="116.0" layoutY="193.0" mnemonicParsing="false" onAction="#goLogIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Connection" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="72.0" />
                </font>
@@ -47,6 +47,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goSignIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" />
+      <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goSignIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE" />
    </children>
 </AnchorPane>

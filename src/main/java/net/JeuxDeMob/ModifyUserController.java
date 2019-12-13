@@ -4,11 +4,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.*;
 import javafx.beans.property.*;
 import javafx.event.*;
@@ -86,7 +83,11 @@ public class ModifyUserController {
 	}
 	public void mouseClickedMail(MouseEvent e) throws SQLException {
 		TextField test = (TextField) e.getSource();
-		if(!test.getText().equals(res.getString(test.getId()))) {
+
+		System.out.println("Resulta = "+res.getString(test.getId()));
+		System.out.println(test.getText());
+		
+		if(test.getText()!=null&&!test.getText().equals(res.getString(test.getId()))) {
 			if(tamp!=null ) {
 				System.out.println("1"+tamp.getText());
 				if(tamp.getText()==null||tamp.getLength()==0) {

@@ -28,7 +28,7 @@ public class LogInController {
 	
 	@FXML
 	public void goSignIn() throws IOException {
-		 App.setRoot("SignIn");
+		 App.setRoot("Register");
 	}
 	
 	public void over() {

@@ -77,13 +77,13 @@
                   <Image url="@backGround/Contenerblanc.png" />
                </image>
             </ImageView>
-            <Button layoutX="191.0" layoutY="208.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 20; -fx-font-weight: bold;" text="Jouer !!" textFill="WHITE">
+            <Button layoutX="191.0" layoutY="208.0" mnemonicParsing="false" onAction="#goGame" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 20; -fx-font-weight: bold;" text="Jouer !!" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="gameMod" layoutX="105.0" layoutY="113.0" prefHeight="26.0" prefWidth="212.0" />
-            <ChoiceBox fx:id="nbPlayers" layoutX="255.0" layoutY="160.0" prefHeight="26.0" prefWidth="61.0" />
+            <ChoiceBox fx:id="gameMod" layoutX="105.0" layoutY="113.0" prefHeight="26.0" prefWidth="212.0" style="-fx-background-color: #8DE59C; -fx-border-color: #4AB15C; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 6;" />
+            <ChoiceBox fx:id="nbPlayers" layoutX="255.0" layoutY="160.0" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #8DE59C; -fx-background-radius: 6; -fx-border-width: 2; -fx-border-color: #4AB15C; -fx-border-radius: 5;" />
             <Label layoutX="110.0" layoutY="157.0" prefHeight="30.0" prefWidth="134.0" text="Nombre joueur  : ">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
