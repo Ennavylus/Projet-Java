@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
 public class LogInController {
 
@@ -18,10 +20,11 @@ public class LogInController {
 	
 	@FXML
 	Button logIn;
-	
+	@FXML ImageView adminImage;
 	@FXML
 	Button signIn;
-	
+	@FXML AnchorPane log; 
+	@FXML AnchorPane logHome; 
 
 	@FXML
 	Label error;
@@ -35,12 +38,41 @@ public class LogInController {
 		
 	}
 	
+	public void admin() {
+		AnchorPane pane;
+		try {
+			pane = FXMLLoader.load(getClass().getResource("LogAdmin.fxml"));
+			log.getChildren().setAll(pane);
+			adminImage.setOpacity(1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void goLogByAdmin() {
+		try {
+			App.setRoot("InterfaceUser");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void goAdmin() {
+		try {
+			App.setRoot("InterfaceUser");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void goLogIn() throws IOException {
 		error.setText(null);
 		String pseudolog = pseudo.getText();
 		String passLog = password.getText();
 		var db= DataBase.getInstance();
-		String request = "SELECT id, pseudo, mdp FROM utilisateur where pseudo='"+pseudolog+"';";
+		String request = "SELECT id, pseudo, mdp, admin FROM utilisateur where pseudo='"+pseudolog+"';";
 		ResultSet res = db.query(request);
 		try {
 
@@ -52,6 +84,10 @@ public class LogInController {
 			if(verif.equals(passLog)) {
 				id= res.getInt("id");
 				System.out.println("merci momo");
+				if( res.getInt("admin")==1) {
+					admin();
+					return;
+				}
 				App.setRoot("InterfaceUser");
 			}
 			else {
