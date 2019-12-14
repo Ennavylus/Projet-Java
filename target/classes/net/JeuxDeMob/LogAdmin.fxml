@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.LogInController">
    <children>
       <ImageView fitHeight="285.0" fitWidth="356.0" pickOnBounds="true">
@@ -25,9 +24,9 @@
             <Font name="Microsoft YaHei" size="72.0" />
          </font>
       </Button>
-      <Label layoutX="36.0" layoutY="34.0" prefHeight="114.0" prefWidth="298.0" text="Oups, je ne vous avais pas reconnu !" wrapText="true">
+      <Label layoutX="36.0" layoutY="34.0" prefHeight="114.0" prefWidth="298.0" text="Oups, Mr l'administrateur je ne vous avais pas reconnu !" wrapText="true">
          <font>
-            <Font name="Roboto Bold" size="27.0" />
+            <Font name="Roboto Bold" size="26.0" />
          </font>
       </Label>
       <Label layoutX="39.0" layoutY="168.0" prefHeight="30.0" prefWidth="226.0" text="Ou souhaitez vous vous rendre ?">

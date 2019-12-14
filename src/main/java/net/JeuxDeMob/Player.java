@@ -33,7 +33,7 @@ public class Player {
 		
 	
 	public boolean addCard(Card card) {
-		if(card!=null&&this.getHandCard().get(4)==null) {
+		if(card!=null&&this.getHandCard().size()<5) {
 			this.handCard.add(card);
 			return true;
 		}

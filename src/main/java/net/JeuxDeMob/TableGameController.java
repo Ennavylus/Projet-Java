@@ -2,6 +2,7 @@ package net.JeuxDeMob;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javafx.fxml.*;
@@ -24,10 +25,20 @@ public class TableGameController {
 	@FXML ImageView pnj3;
 	
 	private Game game;
+	private ArrayList<ImageView> hand;
 	
 	public void initialize() throws SQLException{
 		this.game = new Game("pony", 3);
-
+		System.out.println(game.getPlayerList().get(0).getPseudo());
+		card0.setImage( this.game.getPlayerList().get(0).getHandCard().get(0).getImage() );
+		card1.setImage(this.game.getPlayerList().get(0).getHandCard().get(1).getImage()); 
+		card2.setImage(this.game.getPlayerList().get(0).getHandCard().get(2).getImage());
+		card3.setImage(this.game.getPlayerList().get(0).getHandCard().get(3).getImage());
+		card4.setImage(this.game.getPlayerList().get(0).getHandCard().get(4).getImage());
+		
+	
+		
+		
 		
 		
 		
@@ -51,6 +62,12 @@ public class TableGameController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public ArrayList<ImageView> getHand() {
+		return hand;
+	}
+	public void setHand(ArrayList<ImageView> hand) {
+		this.hand = hand;
 	}
 	
 	

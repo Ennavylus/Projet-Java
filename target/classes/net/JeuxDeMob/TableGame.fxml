@@ -40,30 +40,11 @@
       </Button>
       <AnchorPane layoutY="408.0" prefHeight="437.0" prefWidth="603.0">
          <children>
-            <ImageView fx:id="card0" fitHeight="777.0" fitWidth="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pony/jaune.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="card1" fitHeight="777.0" fitWidth="200.0" layoutX="100.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pony/jaune.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="card2" fitHeight="777.0" fitWidth="200.0" layoutX="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pony/jaune.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="card3" fitHeight="777.0" fitWidth="200.0" layoutX="300.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pony/jaune.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="card4" fitHeight="777.0" fitWidth="200.0" layoutX="400.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pony/vert.png" />
-               </image></ImageView>
+            <ImageView fx:id="card0" fitHeight="777.0" fitWidth="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card1" fitHeight="777.0" fitWidth="200.0" layoutX="100.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card2" fitHeight="777.0" fitWidth="200.0" layoutX="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card3" fitHeight="777.0" fitWidth="200.0" layoutX="300.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card4" fitHeight="777.0" fitWidth="200.0" layoutX="400.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
