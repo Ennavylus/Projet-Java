@@ -11,11 +11,12 @@ public class Card extends ImageView {
 	public Card(String url, String name) {
 		this.setName(name);
 		this.setUrl(url);
-		Image test = new Image(getClass().getResourceAsStream(url));
 		this.setImage(new Image(getClass().getResourceAsStream(url)));
 		
 	}
-
+	public String toString() {
+		return name;
+	}
 
 
 	public String getUrl() {

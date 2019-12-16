@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.RegisterController">
    <children>
-      <ImageView fitHeight="688.0" fitWidth="917.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="688.0" fitWidth="918.0" pickOnBounds="true">
          <image>
             <Image url="@backGround/fondLog.png" />
          </image>

@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="logHome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.LogInController">
    <children>
-      <ImageView fitHeight="738.0" fitWidth="917.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="688.0" fitWidth="918.0" pickOnBounds="true">
          <image>
             <Image url="@backGround/fondLog.png" />
          </image>
@@ -50,7 +50,7 @@
       <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goSignIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE" />
       <ImageView fx:id="adminImage" fitHeight="496.0" fitWidth="279.0" layoutX="397.0" layoutY="78.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@joueur/hiclipart.com%20(1).png" />
+            <Image url="@backGround/4.png" />
          </image>
       </ImageView>
    </children>

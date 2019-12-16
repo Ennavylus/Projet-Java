@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.TableGameController">
    <children>
-      <ImageView fitHeight="688.0" fitWidth="917.0" pickOnBounds="true">
+      <ImageView fitHeight="688.0" fitWidth="918.0" pickOnBounds="true">
          <image>
-            <Image url="@backGround/table%20jeu%20taverne3.jpg" />
+            <Image url="@backGround/79366986_503083353892436_3615691885693108224_n.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj1" fitHeight="336.0" fitWidth="214.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj1" fitHeight="336.0" fitWidth="214.0" layoutX="48.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@joueur/5def76dc62835.png" />
+            <Image url="@joueur/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj2" fitHeight="303.0" fitWidth="258.0" layoutX="339.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj2" fitHeight="308.0" fitWidth="188.0" layoutX="364.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@joueur/5def76c60662d.png" />
+            <Image url="@joueur/7.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj3" fitHeight="362.0" fitWidth="246.0" layoutX="680.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj3" fitHeight="306.0" fitWidth="223.0" layoutX="706.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@joueur/5df358cdc94b2.png" />
+            <Image url="@joueur/6.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="251.0" fitWidth="931.0" layoutX="-7.0" layoutY="442.0" pickOnBounds="true">
+      <ImageView fitHeight="285.0" fitWidth="931.0" layoutX="-7.0" layoutY="408.0" pickOnBounds="true">
          <image>
             <Image url="@backGround/Sans%20titre.png" />
          </image>
@@ -40,12 +43,73 @@
       </Button>
       <AnchorPane layoutY="408.0" prefHeight="437.0" prefWidth="603.0">
          <children>
-            <ImageView fx:id="card0" fitHeight="777.0" fitWidth="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="card1" fitHeight="777.0" fitWidth="200.0" layoutX="100.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="card2" fitHeight="777.0" fitWidth="200.0" layoutX="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="card3" fitHeight="777.0" fitWidth="200.0" layoutX="300.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="card4" fitHeight="777.0" fitWidth="200.0" layoutX="400.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <HBox fx:id="centreTable" layoutX="63.0" layoutY="72.0" prefHeight="60.0" prefWidth="603.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fblanc.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/forange.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fnoir.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="170.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fmarron.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="170.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fjaune.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fgris.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="90.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pony/fbleu.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <ImageView fx:id="card0" fitHeight="300.0" fitWidth="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card1" fitHeight="300.0" fitWidth="200.0" layoutX="100.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card2" fitHeight="300.0" fitWidth="200.0" layoutX="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card3" fitHeight="300.0" fitWidth="200.0" layoutX="300.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="card4" fitHeight="300.0" fitWidth="200.0" layoutX="400.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onHover" onMouseExited="#onHover" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pony/bleu.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="717.0" layoutY="474.0" prefHeight="200.0" prefWidth="200.0" />
+      <VBox fx:id="figurinePnj2" layoutX="333.0" layoutY="117.0" prefHeight="200.0" prefWidth="50.0" />
+      <VBox fx:id="figurinePnj1" layoutX="11.0" layoutY="217.0" prefHeight="200.0" prefWidth="50.0" />
+      <VBox fx:id="figurinePnj3" layoutX="673.0" layoutY="127.0" prefHeight="200.0" prefWidth="50.0" />
+      <Label fx:id="pseudoPnj1" layoutX="70.0" layoutY="141.0" prefHeight="44.0" prefWidth="170.0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="pseudoPnj2" layoutX="374.0" layoutY="73.0" prefHeight="44.0" prefWidth="170.0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="pseudoPnj3" layoutX="738.0" layoutY="131.0" prefHeight="44.0" prefWidth="170.0" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

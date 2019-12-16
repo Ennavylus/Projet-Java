@@ -59,9 +59,11 @@ public class InterfaceUserController {
 			e.printStackTrace();
 		}
 	}
-	public void goGame() throws IOException {
-		 App.setRoot("TableGame");
+	public void goGameLoad() throws IOException {
+		App.setRoot("TableGame");
+		
 	}
+
 	public void goDisconnect() throws IOException {
 		 App.setRoot("LogIn");
 	}
@@ -77,6 +79,6 @@ public class InterfaceUserController {
 		}
 	}
 }
-	
+
 	
 

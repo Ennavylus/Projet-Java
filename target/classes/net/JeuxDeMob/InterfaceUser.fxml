@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.InterfaceUserController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.InterfaceUserController">
    <children>
       <ImageView fitHeight="688.0" fitWidth="917.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -77,7 +77,7 @@
                   <Image url="@backGround/Contenerblanc.png" />
                </image>
             </ImageView>
-            <Button layoutX="191.0" layoutY="208.0" mnemonicParsing="false" onAction="#goGame" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 20; -fx-font-weight: bold;" text="Jouer !!" textFill="WHITE">
+            <Button layoutX="191.0" layoutY="208.0" mnemonicParsing="false" onAction="#goGameLoad" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 20; -fx-font-weight: bold;" text="Jouer !!" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
