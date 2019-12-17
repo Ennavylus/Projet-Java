@@ -5,9 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.TableGameController">
@@ -37,6 +35,7 @@
             <Image url="@backGround/Sans%20titre.png" />
          </image>
       </ImageView>
+      <TilePane fx:id="centreTable" layoutX="36.0" layoutY="506.0" prefHeight="60.0" prefWidth="852.0" />
       <Button fx:id="quit" layoutX="62.0" layoutY="27.0" mnemonicParsing="false" onAction="#goQuit" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Quitter" textFill="WHITE">
          <font>
             <Font size="19.0" />
@@ -44,7 +43,6 @@
       </Button>
       <AnchorPane layoutY="408.0" prefHeight="437.0" prefWidth="603.0">
          <children>
-            <HBox fx:id="centreTable" layoutX="63.0" layoutY="72.0" prefHeight="60.0" prefWidth="603.0" />
             <ImageView fx:id="card0" fitHeight="300.0" fitWidth="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onLook" onMouseExited="#onExit" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="card1" fitHeight="300.0" fitWidth="200.0" layoutX="100.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onLook" onMouseExited="#onExit" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="card2" fitHeight="300.0" fitWidth="200.0" layoutX="200.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onLook" onMouseExited="#onExit" pickOnBounds="true" preserveRatio="true" />
@@ -52,9 +50,6 @@
             <ImageView fx:id="card4" fitHeight="300.0" fitWidth="200.0" layoutX="400.0" layoutY="152.0" onMouseClicked="#onClickCard" onMouseEntered="#onLook" onMouseExited="#onExit" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <VBox fx:id="figurinePnj2" layoutX="333.0" layoutY="117.0" prefHeight="200.0" prefWidth="50.0" />
-      <VBox fx:id="figurinePnj1" layoutX="11.0" layoutY="217.0" prefHeight="200.0" prefWidth="50.0" />
-      <VBox fx:id="figurinePnj3" layoutX="673.0" layoutY="127.0" prefHeight="200.0" prefWidth="50.0" />
       <Label fx:id="pseudoPnj1" layoutX="70.0" layoutY="141.0" prefHeight="44.0" prefWidth="170.0" textFill="WHITE">
          <font>
             <Font name="Roboto Bold" size="16.0" />
@@ -100,5 +95,8 @@
             </Button>
          </children>
       </AnchorPane>
+      <TilePane fx:id="figurinePnj2" layoutX="339.0" layoutY="110.0" prefHeight="200.0" prefWidth="50.0" />
+      <TilePane fx:id="figurinePnj3" layoutX="681.0" layoutY="141.0" prefHeight="200.0" prefWidth="50.0" />
+      <TilePane fx:id="figurinePnj1" layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="50.0" />
    </children>
 </AnchorPane>

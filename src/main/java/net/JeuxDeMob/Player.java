@@ -22,6 +22,7 @@ public class Player {
 	//private ArrayList<Figurine> handFig;
 	private HashMap<String, Figurine> handFigurine;
 	private HashMap<String, Card> handCards;
+	
 
 	public Player(boolean user ) {
 		previousSkin = new int[3];

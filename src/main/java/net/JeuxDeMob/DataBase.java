@@ -16,7 +16,7 @@ public class DataBase {
 	    String user = "root", pswd = "56421988";
 		try {
 			cnx = DriverManager.getConnection(url,user,pswd);
-			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil) VALUE(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil, admin) VALUE(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			updateStatement = cnx.prepareStatement("UPDATE Utilisateur SET Pseudo=?, mail = ?, mdp = ?, urlProfil = ? WHERE id=?");
 			deleteStatement = cnx.prepareStatement("DELETE FROM ? WHERE ?=?");
 		} catch (SQLException e) {
@@ -65,6 +65,7 @@ public class DataBase {
 			insertStatement.setString(2, mail);
 			insertStatement.setString(3, mdp);
 			insertStatement.setString(4, "prof/prof.png");
+			insertStatement.setInt(5, 0);
 			int inserted = insertStatement.executeUpdate();
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {

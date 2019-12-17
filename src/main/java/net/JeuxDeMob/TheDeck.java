@@ -3,6 +3,9 @@ package net.JeuxDeMob;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+import javafx.scene.layout.HBox;
+
 import java.io.InputStream;
 import java.sql.*;
 
@@ -15,13 +18,14 @@ public class TheDeck {
 	private ArrayList<Card> defausse;
 	private int countCard;
 	
+	
 	TheDeck(String nomDeck) throws SQLException{
 		var db = DataBase.getInstance();
 		ResultSet res = db.query("Select name, url from card ;");
 		this.setDeckFigurine(new HashMap<String, Figurine>());
 		this.setDeck(new ArrayList<Card>());
 		this.setDefausse(new ArrayList<Card>());
-		//this.setFigurine(new ArrayList<Figurine>());
+		
 		while(res.next()) {
 			String url = nomDeck+"/"+res.getString("url");
 			String name = res.getString("name");
@@ -41,6 +45,10 @@ public class TheDeck {
 			this.getDeck().remove(i);
 			this.countCard--;
 		}
+		//for(int i = 0; i<deck.size(); i++) {
+			//System.out.println("carte "+i+" = "+ deck.get(i));
+			
+     	//	}
         
 	}
 	
