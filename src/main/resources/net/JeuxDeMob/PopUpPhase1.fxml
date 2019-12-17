@@ -7,33 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.TableGameController">
    <children>
-      <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
+      <ImageView fitHeight="120.0" fitWidth="200.0" pickOnBounds="true">
          <image>
             <Image url="@backGround/Contenerblanc.png" />
          </image>
       </ImageView>
-      <Button fx:id="logIn" layoutX="133.0" layoutY="166.0" mnemonicParsing="false" onAction="#goLogIn" prefHeight="18.0" prefWidth="49.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 8; -fx-font-weight: bold;" stylesheets="@style.css" text="Passer" textFill="WHITE">
+      <Button fx:id="playCard" layoutX="14.0" layoutY="78.0" mnemonicParsing="false" onAction="#playCardButton" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="Jouer" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="72.0" />
          </font>
       </Button>
-      <Button fx:id="logIn1" layoutX="52.0" layoutY="124.0" mnemonicParsing="false" onAction="#goLogIn" prefHeight="28.0" prefWidth="88.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="Déclarer" textFill="WHITE">
+      <Label fx:id="pseudoPnj2" layoutX="22.0" layoutY="7.0" prefHeight="62.0" prefWidth="163.0" text="Selectionner une carte a jouer" wrapText="true">
+         <font>
+            <Font name="Roboto Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="playCard1" layoutX="107.0" layoutY="78.0" mnemonicParsing="false" onAction="#playCardButton" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="passer" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="72.0" />
          </font>
       </Button>
-      <Label layoutX="17.0" layoutY="23.0" prefHeight="30.0" prefWidth="150.0" text="Phase Déclaration" textAlignment="CENTER">
-         <font>
-            <Font name="Roboto Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="73.0" prefHeight="46.0" prefWidth="132.0" text="Selectionnez une pair ou un brelan" wrapText="true">
-         <font>
-            <Font name="Roboto Bold" size="11.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

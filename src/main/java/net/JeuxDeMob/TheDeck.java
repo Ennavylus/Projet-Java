@@ -2,12 +2,15 @@ package net.JeuxDeMob;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.io.InputStream;
 import java.sql.*;
 
 public class TheDeck {
 	
 	private ArrayList<Card> deck;
-	private ArrayList<Figurine> figurine;
+	private HashMap<String, Figurine> deckFigurine;
+	//private ArrayList<Figurine> figurine;
 	private String[] listUrl;
 	private ArrayList<Card> defausse;
 	private int countCard;
@@ -15,15 +18,17 @@ public class TheDeck {
 	TheDeck(String nomDeck) throws SQLException{
 		var db = DataBase.getInstance();
 		ResultSet res = db.query("Select name, url from card ;");
+		this.setDeckFigurine(new HashMap<String, Figurine>());
 		this.setDeck(new ArrayList<Card>());
 		this.setDefausse(new ArrayList<Card>());
-		this.setFigurine(new ArrayList<Figurine>());
+		//this.setFigurine(new ArrayList<Figurine>());
 		while(res.next()) {
 			String url = nomDeck+"/"+res.getString("url");
 			String name = res.getString("name");
-			this.getFigurine().add(new Figurine(name,nomDeck+"/f"+res.getString("url")));
+			this.getDeckFigurine().put(name, new Figurine(name,nomDeck+"/f"+res.getString("url")));
 			for(int i =0; i<5; i++) {
-				this.getDeck().add(new Card(url, name));
+				InputStream is = getClass().getResourceAsStream(url);
+				this.getDeck().add(new Card(is, name));
 				this.countCard++;
 			}
 		}
@@ -39,15 +44,6 @@ public class TheDeck {
         
 	}
 	
-	public boolean toPioche(Player player) {
-		if(player.addCard(this.getDeck().get(0))) {
-			this.getDeck().remove(0);
-			this.countCard--;
-			return true;
-		}
-		return false;
-		
-	}
 	
 	
 	
@@ -84,12 +80,20 @@ public class TheDeck {
 		this.countCard = countCard;
 	}
 
-	public ArrayList<Figurine> getFigurine() {
-		return figurine;
+//	public ArrayList<Figurine> getFigurine() {
+//		return figurine;
+//	}
+//
+//	public void setFigurine(ArrayList<Figurine> figurine) {
+//		this.figurine = figurine;
+//	}
+
+	public HashMap<String, Figurine> getDeckFigurine() {
+		return deckFigurine;
 	}
 
-	public void setFigurine(ArrayList<Figurine> figurine) {
-		this.figurine = figurine;
+	public void setDeckFigurine(HashMap<String, Figurine> deckFigurine) {
+		this.deckFigurine = deckFigurine;
 	}
 
 }

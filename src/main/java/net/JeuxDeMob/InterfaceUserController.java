@@ -7,6 +7,7 @@ import javafx.beans.property.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.layout.AnchorPane;
 
 public class InterfaceUserController {
 	private ResultSet res;
@@ -33,6 +34,8 @@ public class InterfaceUserController {
 	ChoiceBox gameMod;
 	@FXML
 	ChoiceBox nbPlayers;
+	@FXML AnchorPane main;
+	
 	public void initialize(){
 		var db= DataBase.getInstance();
 		res = db.query("SELECT pseudo, nbPartie,Victoire,defaite,urlProfil FROM utilisateur as U LEFT JOIN historique as H ON U.id = H.id_utilisateur where U.id="+LogInController.id+";");
@@ -61,7 +64,6 @@ public class InterfaceUserController {
 	}
 	public void goGameLoad() throws IOException {
 		App.setRoot("TableGame");
-		
 	}
 
 	public void goDisconnect() throws IOException {
