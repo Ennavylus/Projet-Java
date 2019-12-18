@@ -11,7 +11,7 @@ public class Game {
 	private ArrayList<Player> playerList;
 	private int nbPlayerTotal;
 	private int playerTurn;
-	private static Player played;
+	static Player played;
 	
 	
 	
@@ -50,9 +50,11 @@ public class Game {
 					System.out.println(c.getName());
 				}
 				if(!iHaveNoPossibilities()) {
+					System.out.println("ok play !");
 				TableGameController.phase1();
 				return;
 				}
+				System.out.println("ok next player");
 				nextPlayer();
 			
 			}
@@ -63,6 +65,7 @@ public class Game {
 					System.out.println(c.getName());
 				}
 				if(!iHaveNoPossibilities()) {
+					System.out.println("ok play !");
 					int rand = new Random().nextInt(played.getHandCards().size());
 					Card c = played.getHandCards().get(rand);
 					while(inHandFigurine(c.getName(),played)) {
@@ -91,23 +94,30 @@ public class Game {
 				System.out.println("carte  = "+card);
 				if(focus.isUser()) {
 					System.out.println("ok is user");
-					TableGameController.phaseContre(played.getHandCards().get(whatNumberCardInHand(card, played)));
+					TableGameController.phaseContre(played.getHandCards().get(whatNumberCardInHand(card, played)), played.getPseudo());
+					played.getHandCards().remove(whatNumberCardInHand(card, played));
 					return false;
 				}
 				else {
 					contre(focus,card);
 					if( whatNumberCardInHand(card, played)<30) {
+						if(focus.isUser()) {
+							System.out.println("ok is user");
+							TableGameController.phaseContre(played.getHandCards().get(whatNumberCardInHand(card, played)), played.getPseudo());
+							return false;
+						}
 						System.out.println("double contre");
 						TableGameController.refreshFigPlayer(this.playerTurn, posPlayer, card);
-						played.getHandCards().remove(whatNumberCardInHand(card, played));
+						
 						toPioche(played);
 					}
+					TableGameController.refreshFigPlayer(this.playerTurn, posPlayer, card);
 					return true;
 				}
 			}
 			played.addFigurine(this.getPlayerList().get(posPlayer).getHandFigurine().get(card));
 			this.getPlayerList().get(posPlayer).getHandFigurine().remove(card);
-		}
+			}
 		else {
 			played.addFigurine(this.deck.getDeckFigurine().get(card));
 			this.deck.getDeckFigurine().remove(card);
@@ -164,12 +174,14 @@ public class Game {
 	public int howIsFiguring(String nameCard) {
 		int count;
 		for(int i = 0; i<nbPlayerTotal;i++) {
+			
 			Player p = this.playerList.get(i);
 			String[] HandCards = new String[5];
 			count =0;
 			for (Map.Entry mapentry : p.getHandFigurine().entrySet()) {
 				HandCards[count] = mapentry.getKey().toString(); 
 				if(nameCard == mapentry.getKey().toString()) {
+					if(this.playerList.get(i)==played)break;
 					count++;
 					break;
 				}
@@ -193,6 +205,7 @@ public class Game {
 		}
 		if(count ==played.getHandCards().size()) {
 			played.setNoPossibilities(true);
+			System.out.println("peut pas jouer? = "+played.isNoPossibilities());
 			return true;
 		}
 		played.setNoPossibilities(false);

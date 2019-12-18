@@ -48,6 +48,7 @@ public class TableGameController {
 	private static Player playerPnj2;
 	private static Player playerPnj3;
 	private static int nbcomputer;
+	private static String cardContre;
 	
 	static AnchorPane choiceStat;
 	static Button playCardStat;
@@ -83,28 +84,40 @@ public class TableGameController {
 	
 	public static void phase1() {
 		choiceStat.setVisible(true);
+		actionToChoiceStat.setText("Selectionner une carte a jouer");
 		contrePlayStat.setVisible(false);
+		playCardStat.setVisible(true);
 		passPlayStat.setVisible(false);
 	}
-	public static void phaseContre(Card card) {
-		lastCard = card;
+	public static void phaseContre(Card card, String player) {
+		cardContre = card.getName();
+
+		actionToChoiceStat.setText(player+" veut vous prendre la figurine "+cardContre+"\nque faite vous?");
 		contrePlayStat.setVisible(true);
-		contrePlayStat.setOpacity(1);
 		passPlayStat.setVisible(true);
 		playCardStat.setVisible(false);
 		choiceStat.setVisible(true);
 	}
 	
 	public void contreCard() {
-		
+		choiceStat.setVisible(false);
+		this.game.getPlayerList().get(0).getHandCards().remove(this.game.whatNumberCardInHand(cardContre,playerReel));
+		this.game.toPioche(playerReel);
+		setViewHandCards();
+		this.game.nextPlayer();
 	}
 	public void passPhase() {
 		choiceStat.setVisible(false);
+		System.out.println("carte = "+cardContre);
+		this.game.played.addFigurine(this.game.getPlayerList().get(0).getHandFigurine().get(cardContre));
+		this.game.getPlayerList().get(0).getHandFigurine().remove(cardContre);
+		moveFig(whatPlayer(this.game.getPlayerTurn()), handfigStat, cardContre);
+		setViewHandCards();
 		this.game.nextPlayer();
 	}
 	
 	public void playCardButton() {
-		
+		if(lastCard==null)return;
 		String nameCard = lastCard.getImage().toString();
 		choiceStat.setVisible(false);
 		
