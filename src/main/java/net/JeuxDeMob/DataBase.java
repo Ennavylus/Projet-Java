@@ -59,7 +59,7 @@ public class DataBase {
 		
 	}
 	
-	public boolean insertUtilisateur(String pseudo, String mail, String mdp) {
+	public User insertUtilisateur(String pseudo, String mail, String mdp) {
 		try {
 			insertStatement.setString(1, pseudo);
 			insertStatement.setString(2, mail);
@@ -70,12 +70,12 @@ public class DataBase {
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {
 				var lastId = res.getInt(1);
-				return true;
+				return new User(pseudo, mail, mdp, 0);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 	
 	public boolean clearStat() {

@@ -19,7 +19,7 @@
             <Font name="Microsoft YaHei" size="72.0" />
          </font>
       </Button>
-      <Button fx:id="logIn1" layoutX="39.0" layoutY="222.0" mnemonicParsing="false" onAction="#goAdmin" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Admin" textFill="WHITE">
+      <Button fx:id="admin" layoutX="39.0" layoutY="222.0" mnemonicParsing="false" onAction="#goAdmin" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Admin" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="72.0" />
          </font>

@@ -18,8 +18,8 @@ public class InterfaceUserController {
 	Button clear;
 	@FXML
 	Button modify;
-	@FXML
-	Button disconnect;
+	@FXML Button disconnect;
+	@FXML Button goAdmin;
 	@FXML
 	Label pseudo;
 	@FXML
@@ -38,7 +38,7 @@ public class InterfaceUserController {
 	
 	public void initialize(){
 		var db= DataBase.getInstance();
-		res = db.query("SELECT pseudo, nbPartie,Victoire,defaite,urlProfil FROM utilisateur as U LEFT JOIN historique as H ON U.id = H.id_utilisateur where U.id="+LogInController.id+";");
+		res = db.query("SELECT pseudo, nbPartie,Victoire,defaite,urlProfil,admin FROM utilisateur as U LEFT JOIN historique as H ON U.id = H.id_utilisateur where U.id="+LogInController.id+";");
 		try {
 			res.next();
 			this.nbPlay = new SimpleIntegerProperty(res.getInt("nbPartie"));
@@ -47,6 +47,7 @@ public class InterfaceUserController {
 			if(nbPlay==null) {
 				nbPlay.set(0);nbW.set(0);nbL.set(0);
 			}
+			if(res.getInt("admin")!=1)goAdmin.setVisible(false);
 			
 			System.out.println(LogInController.id);
 			pseudo.setText(res.getString("pseudo"));
@@ -65,7 +66,9 @@ public class InterfaceUserController {
 	public void goGameLoad() throws IOException {
 		App.setRoot("TableGame");
 	}
-
+	public void goAdminPage() throws IOException {
+		App.setRoot("admin");
+	}
 	public void goDisconnect() throws IOException {
 		 App.setRoot("LogIn");
 	}

@@ -25,7 +25,7 @@ public class LogInController {
 	Button signIn;
 	@FXML AnchorPane log; 
 	@FXML AnchorPane logHome; 
-
+	@FXML Button admin;
 	@FXML
 	Label error;
 	
@@ -61,7 +61,7 @@ public class LogInController {
 	}
 	public void goAdmin() {
 		try {
-			App.setRoot("InterfaceUser");
+			App.setRoot("admin");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
