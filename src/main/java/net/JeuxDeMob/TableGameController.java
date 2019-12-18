@@ -18,7 +18,8 @@ public class TableGameController {
 	@FXML  Button playCard;
 	@FXML  Button passPlay;
 	@FXML  Button contrePlay;
-	@FXML AnchorPane cardList;
+	@FXML AnchorPane main;
+	@FXML ImageView finish;
 	@FXML ImageView card0;
 	@FXML ImageView card1;
 	@FXML ImageView card2;
@@ -36,15 +37,18 @@ public class TableGameController {
 	@FXML TilePane figurinePnj1;
 	@FXML TilePane figurinePnj2;	
 	@FXML TilePane figurinePnj3;
+	@FXML Label actionToChoice;
 	
 	private Game game;
+	private ImageView lastCard;
 	private ArrayList<ImageView> hand;
+	
 	private static Player playerReel;
 	private static Player playerPnj1;
 	private static Player playerPnj2;
 	private static Player playerPnj3;
 	private static int nbcomputer;
-	private ImageView lastCard;
+	
 	static AnchorPane choiceStat;
 	static Button playCardStat;
 	static Button passPlayStat;
@@ -54,22 +58,18 @@ public class TableGameController {
 	static TilePane figurinePnj2Stat;
 	static TilePane figurinePnj3Stat;
 	static TilePane handfigStat;
-	
+	static ImageView finishStat;
+	static AnchorPane mainStat;
+	static int nbCardsHand;
+	static Label actionToChoiceStat;
+
 	
 	public void initialize() throws SQLException{
 		lastCard=null;
 		this.nbcomputer = 3;
-		
-		figurinePnj1Stat = figurinePnj1;
-		figurinePnj2Stat = figurinePnj2;
-		figurinePnj3Stat = figurinePnj3;
-		handfigStat = handfig;
-		centreTableStat = centreTable;
-		playCardStat = playCard;
-		passPlayStat = passPlay;
-		contrePlayStat =contrePlay;
-		choiceStat = choice;
+		this.setStatic();
 		choiceStat.setVisible(false);
+		finishStat.setVisible(false);
 		
 		this.game = new Game("pony", this.nbcomputer);
 		this.createCenterTable();
@@ -86,11 +86,21 @@ public class TableGameController {
 		contrePlayStat.setVisible(false);
 		passPlayStat.setVisible(false);
 	}
-	public static void phaseContre() {
-		choiceStat.setVisible(true);
+	public static void phaseContre(Card card) {
+		lastCard = card;
 		contrePlayStat.setVisible(true);
+		contrePlayStat.setOpacity(1);
 		passPlayStat.setVisible(true);
 		playCardStat.setVisible(false);
+		choiceStat.setVisible(true);
+	}
+	
+	public void contreCard() {
+		
+	}
+	public void passPhase() {
+		choiceStat.setVisible(false);
+		this.game.nextPlayer();
 	}
 	
 	public void playCardButton() {
@@ -98,42 +108,12 @@ public class TableGameController {
 		String nameCard = lastCard.getImage().toString();
 		choiceStat.setVisible(false);
 		
-		//refreshFigPlayer();
-		
-		
-		this.game.getPlayerList().get(0).getHandCards().remove(nameCard);
-		this.game.toPioche(this.game.getPlayerList().get(0));
-		setViewHandCards();
 		this.lastCard.setLayoutY(152.0);
 		this.lastCard=null;
-		this.game.toPlayCard(nameCard);
-		//this.game.nextPlayer();
+		if(this.game.toPlayCard(nameCard))this.game.nextPlayer();
+		setViewHandCards();
 		
-	}
-
-	
-	
-	// to search if the figuring is on the table, and return this position
-	public int isFigInOnTable(String nameCard, int posPlayer) {
-		if(posPlayer>50) {
-			for(int i = 0;i<centreTable.getChildren().size();i++) {
-				var figurine = centreTable.getChildren().get(i);
-				if(nameCard.equals(figurine.toString())) {
-					return i;
-				}
-			}
-		}
-		else {
-			for(int i = 0;i<this.game.getPlayerList().get(posPlayer).getHandFigurine().size();i++) {
-				for (Map.Entry mapentry :this.game.getPlayerList().get(posPlayer).getHandFigurine().entrySet()) {
-					if(nameCard == mapentry.getKey().toString()) {
-						return i;
-					}
-				}
-			}
-		}
-		return 99;
-
+		;
 	}
 	
 	// Interaction if click on card
@@ -152,12 +132,13 @@ public class TableGameController {
 			card.setLayoutY(0);
 		}
 		lastCard =card;
-
-		playCard.setDisable(this.game.inHandFigurine(lastCard.getImage().toString(),this.game.getPlayerList().get(0) ));
+		playCard.setDisable(this.game.inHandFigurine(lastCard.getImage().toString(),this.game.getPlayerList().get(0)));
+		//playCard.setVisible(!this.game.inHandFigurine(lastCard.getImage().toString(),this.game.getPlayerList().get(0)));
 	}
 
 	// Interaction On Hover
 	public void onLook(MouseEvent e) {
+		setViewHandCards();
 		var card = (ImageView)e.getSource();
 		card.setLayoutY(0);
 	}
@@ -176,19 +157,19 @@ public class TableGameController {
 		}
 	}
 	
-	public static void refreshListFig(Player p, VBox vBox) {
-		String[] listHand = new String[10];
-		int i = 0;
-		for (Map.Entry mapentry : p.getHandFigurine().entrySet()) {
-			listHand[i] = mapentry.getKey().toString() ; 
-			i++;
-		}
-		for(String s:listHand) {
-			vBox.getChildren().add(p.getHandFigurine().get(s));
-		}
-	
-	}
-	
+//	public static void refreshListFig(Player p, VBox vBox) {
+//		String[] listHand = new String[10];
+//		int i = 0;
+//		for (Map.Entry mapentry : p.getHandFigurine().entrySet()) {
+//			listHand[i] = mapentry.getKey().toString() ; 
+//			i++;
+//		}
+//		for(String s:listHand) {
+//			vBox.getChildren().add(p.getHandFigurine().get(s));
+//		}
+//	
+//	}
+	// allows to refsh figuring off all;
 	public static void moveFig(TilePane gamer, TilePane focusPlayer, String nameFig) {
 		int i; 
 		for(i =0;i<focusPlayer.getChildren().size();i++) {
@@ -197,7 +178,6 @@ public class TableGameController {
 			}	
 		}
 	}
-	
 	public static TilePane whatPlayer(int pos) {
 		if(nbcomputer==1) {
 			if(pos == 0)return handfigStat;
@@ -249,19 +229,26 @@ public class TableGameController {
 	}
 
 	private void setViewHandCards() {
-		Object[] listHand = new Object[5];
-		int i = 0;
-		for (Map.Entry mapentry : this.game.getPlayerList().get(0).getHandCards().entrySet()) {
-			listHand[i] = mapentry.getKey() ; 
-			i++;
-	        }
-		card0.setImage(this.game.getPlayerList().get(0).getHandCards().get(listHand[0]));
-		card1.setImage(this.game.getPlayerList().get(0).getHandCards().get(listHand[1]));
-		card2.setImage(this.game.getPlayerList().get(0).getHandCards().get(listHand[2]));
-		card3.setImage(this.game.getPlayerList().get(0).getHandCards().get(listHand[3]));
-		card4.setImage(this.game.getPlayerList().get(0).getHandCards().get(listHand[4]));
-	}
+		nbCardsHand = 0;
+		viewCard(card0);
+		viewCard(card1);
+		viewCard(card2);
+		viewCard(card3);
+		viewCard(card4);
 
+	}
+	public boolean viewCard(ImageView card) {
+		if(nbCardsHand==this.game.getPlayerList().get(0).getHandCards().size()) {
+			card.setVisible(false);
+			//card.setImage(null);
+			return false;
+		}
+		card.setImage(null);
+		card.setImage(this.game.getPlayerList().get(0).getHandCards().get(nbCardsHand));
+		nbCardsHand++;
+		return true;
+		
+	}
 	public void setPnj(int nbcomputer) {
 		if(nbcomputer==1) {
 			playerPnj1 = this.game.getPlayerList().get(1);
@@ -297,7 +284,21 @@ public class TableGameController {
 		}
 		
 	}
-	
+	 public void setStatic() {
+			actionToChoiceStat = actionToChoice;
+			mainStat = main;
+			finishStat  = finish ;
+			figurinePnj1Stat = figurinePnj1;
+			figurinePnj2Stat = figurinePnj2;
+			figurinePnj3Stat = figurinePnj3;
+			handfigStat = handfig;
+			centreTableStat = centreTable;
+			playCardStat = playCard;
+			passPlayStat = passPlay;
+			contrePlayStat =contrePlay;
+			choiceStat = choice;
+
+	 }
 	
 	//Getteur and setteur
 	public ArrayList<ImageView> getHand() {

@@ -3,6 +3,7 @@ package net.JeuxDeMob;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 
 import javafx.scene.image.Image;
@@ -21,8 +22,8 @@ public class Player {
 	private static int countComputer;
 	//private ArrayList<Figurine> handFig;
 	private HashMap<String, Figurine> handFigurine;
-	private HashMap<String, Card> handCards;
-	
+	private ArrayList<Card> handCards;
+	private boolean noPossibilities;
 
 	public Player(boolean user ) {
 		previousSkin = new int[3];
@@ -44,12 +45,13 @@ public class Player {
 			this.setUser(false);
 			this.setSkin(new ImageView(new Image(getClass().getResourceAsStream("joueur/"+this.chooseSkin()+".png"))));
 		}
+		this.setNoPossibilities(false);
 		this.setScore(0);
 		this.setYouTurn(false);
 		//this.setHandCard(new ArrayList<Card>());
 		//this.setHandFig(new ArrayList<Figurine>());
 		this.setHandFigurine(new HashMap<String, Figurine>());
-		this.setHandCards(new HashMap<String, Card>());
+		this.setHandCards(new ArrayList<Card>());
 	}
 	
 	
@@ -73,7 +75,8 @@ public class Player {
 	
 	public boolean addCard(Card card) {
 		if(card!=null&&this.getHandCards().size()<5) {
-			this.handCards.put(card.getName(), card);
+			System.out.println("ok add carte = "+card);
+			this.handCards.add(card);
 			return true;
 		}
 		return false;	
@@ -153,11 +156,23 @@ public class Player {
 		this.handFigurine = handFigurine;
 	}
 
-	public HashMap<String, Card> getHandCards() {
+	public ArrayList<Card> getHandCards() {
 		return handCards;
 	}
-	public void setHandCards(HashMap<String, Card> handCards) {
+	public void setHandCards(ArrayList<Card> handCards) {
 		this.handCards = handCards;
+	}
+
+
+
+	public boolean isNoPossibilities() {
+		return noPossibilities;
+	}
+
+
+
+	public void setNoPossibilities(boolean noPossibilities) {
+		this.noPossibilities = noPossibilities;
 	}
 	
 //	public boolean addCardToPlayer(Player player) {

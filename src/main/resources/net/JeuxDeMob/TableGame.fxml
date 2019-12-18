@@ -78,17 +78,17 @@
                   <Font name="Microsoft YaHei" size="72.0" />
                </font>
             </Button>
-            <Label fx:id="pseudoPnj21" layoutX="22.0" layoutY="7.0" prefHeight="62.0" prefWidth="163.0" text="Selectionner une carte a jouer" wrapText="true">
+            <Label layoutX="22.0" layoutY="7.0" prefHeight="62.0" prefWidth="163.0" text="Selectionner une carte a jouer" wrapText="true">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </Label>
-            <Button fx:id="passPlay" layoutX="107.0" layoutY="78.0" mnemonicParsing="false" onAction="#playCardButton" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="passer" textFill="WHITE">
+            <Button fx:id="passPlay" layoutX="107.0" layoutY="78.0" mnemonicParsing="false" onAction="#passPhase" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="passer" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="72.0" />
                </font>
             </Button>
-            <Button fx:id="contrePlay" layoutX="14.0" layoutY="78.0" mnemonicParsing="false" onAction="#playCardButton" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="contrer" textFill="WHITE">
+            <Button fx:id="contrePlay" layoutX="14.0" layoutY="78.0" mnemonicParsing="false" onAction="#contreCard" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 12; -fx-font-weight: bold;" stylesheets="@style.css" text="contrer" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="72.0" />
                </font>
@@ -98,5 +98,10 @@
       <TilePane fx:id="figurinePnj2" layoutX="339.0" layoutY="110.0" prefHeight="200.0" prefWidth="50.0" />
       <TilePane fx:id="figurinePnj3" layoutX="681.0" layoutY="141.0" prefHeight="200.0" prefWidth="50.0" />
       <TilePane fx:id="figurinePnj1" layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="50.0" />
+      <ImageView fx:id="finish" fitHeight="688.0" fitWidth="918.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@backGround/LoadTable.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
