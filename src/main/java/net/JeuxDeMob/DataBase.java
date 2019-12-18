@@ -70,12 +70,16 @@ public class DataBase {
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {
 				var lastId = res.getInt(1);
-				return new User(pseudo, mail, mdp, 0);
+				return new User(lastId,pseudo, mail, mdp, 0);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void updateThis(int id, String focus, String newValue ) throws SQLException {
+		updateStatement.executeUpdate("UPDATE Utilisateur SET "+focus+"= '"+newValue+"'WHERE id="+id+";");
 	}
 	
 	public boolean clearStat() {
@@ -90,7 +94,11 @@ public class DataBase {
 	
 	public void deleteUser(int id) {
 		try {
-			deleteStatement = cnx.prepareStatement("DELETE FROM Utilisateur WHERE id="+id+";");
+//			deleteStatement.setString(1, "Utilisateur");
+//			deleteStatement.setString(2, "id");
+//			deleteStatement.setInt(3, id);
+//			deleteStatement.executeUpdate();
+			deleteStatement.executeUpdate("DELETE FROM Utilisateur WHERE id="+id+";");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

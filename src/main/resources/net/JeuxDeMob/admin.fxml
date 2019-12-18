@@ -10,7 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.AdminController">
@@ -22,10 +21,10 @@
       </ImageView>
       <SplitPane dividerPositions="0.9166026133743275" layoutX="45.0" layoutY="72.0" orientation="VERTICAL" prefHeight="522.0" prefWidth="413.0">
          <items>
-            <TableView fx:id="listUser" prefHeight="383.0" prefWidth="410.0">
+            <TableView fx:id="listUser" onMouseClicked="#lookClick" prefHeight="383.0" prefWidth="410.0">
               <columns>
                 <TableColumn fx:id="pseudo" prefWidth="95.99999694824214" text="Pseudo" />
-                <TableColumn fx:id="email" prefWidth="161.5999755859375" text="email" />
+                <TableColumn fx:id="email" prefWidth="161.5999755859375" text="Email" />
                   <TableColumn fx:id="mdp" minWidth="0.0" prefWidth="112.800048828125" text="Password" />
                   <TableColumn fx:id="admin" minWidth="8.800048828125" prefWidth="41.5999755859375" text="admin" />
               </columns>
@@ -33,39 +32,31 @@
                   <Insets />
                </opaqueInsets>
             </TableView>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="deleteUser" mnemonicParsing="false" text="Suprimer">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
+                  <TextField fx:id="inputModify" layoutX="245.0" layoutY="4.0" prefHeight="26.0" prefWidth="166.0" />
+                  <Button fx:id="addUser" layoutX="97.0" layoutY="5.0" mnemonicParsing="false" onAction="#addUser" text="Ajouter">
                      <font>
                         <Font name="Roboto Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="addUser" mnemonicParsing="false" text="Ajouter">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
+                  <Button fx:id="modifyUser" layoutX="165.0" layoutY="5.0" mnemonicParsing="false" onAction="#modifyUser" text="Modifier">
                      <font>
                         <Font name="Roboto Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="modifyUser" mnemonicParsing="false" text="Modifier">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
+                  <Button fx:id="deleteUser" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#deleteUser" text="Suprimer">
                      <font>
                         <Font name="Roboto Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField prefHeight="26.0" prefWidth="166.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="20.0" top="10.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <Label layoutX="245.0" layoutY="30.0" prefHeight="23.0" prefWidth="166.0">
+                     <font>
+                        <Font name="Roboto Bold" size="16.0" />
+                     </font>
+                  </Label>
                </children>
-            </HBox>
+            </AnchorPane>
          </items>
       </SplitPane>
       <AnchorPane layoutX="523.0" layoutY="301.0" prefHeight="300.0" prefWidth="338.0">
@@ -76,7 +67,7 @@
                </image>
             </ImageView>
             <ImageView fx:id="faceProfil" fitHeight="87.0" fitWidth="85.0" layoutX="221.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="clearStat" layoutX="214.0" layoutY="245.0" mnemonicParsing="false" text="Ré-Initialiser">
+            <Button fx:id="clearStat" layoutX="214.0" layoutY="245.0" mnemonicParsing="false" onAction="#goClear" text="Ré-Initialiser">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

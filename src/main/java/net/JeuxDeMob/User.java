@@ -3,15 +3,17 @@ package net.JeuxDeMob;
 import javafx.beans.property.*;
 
 public class User {
+	protected IntegerProperty id;
 	protected StringProperty pseudo;
-	protected StringProperty email;
+	protected StringProperty mail;
 	protected StringProperty mdp;
 	protected IntegerProperty admin;
 	
 	
-	public User(String pseudo, String email, String mdp, int admin) {
+	public User(int id,String pseudo, String email, String mdp, int admin) {
+		this.id = new SimpleIntegerProperty(id);
 		this.pseudo = new SimpleStringProperty(pseudo);
-		this.email = new SimpleStringProperty(email);
+		this.mail = new SimpleStringProperty(email);
 		this.mdp = new SimpleStringProperty(mdp);
 		this.admin = new SimpleIntegerProperty(admin);
 	}
@@ -28,14 +30,14 @@ public class User {
 		this.mdp.set(mdp);
 	}
 	
-	public StringProperty emailProperty() {
-		return email;
+	public StringProperty mailProperty() {
+		return mail;
 	}
-	public String getEmail() {
-		return email.get();
+	public String getMail() {
+		return mail.get();
 	}
-	public void setEmail(String email) {
-		this.email.set(email);
+	public void setMail(String email) {
+		this.mail.set(email);
 	}
 	
 	public IntegerProperty adminProperty() {
@@ -46,6 +48,16 @@ public class User {
 	}
 	public void setAdmin(int admin) {
 		this.admin.set(admin);
+	}
+	
+	public IntegerProperty idProperty() {
+		return id;
+	}
+	public int getId() {
+		return id.get();
+	}
+	public void setId(int id) {
+		this.id.set(id);
 	}
 	
 	public StringProperty pseudoProperty() {
