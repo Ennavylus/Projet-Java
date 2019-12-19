@@ -20,7 +20,7 @@ public class DataBase {
 			cnx = DriverManager.getConnection(url,user,pswd);
 			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil, admin) VALUE(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			updateStatement = cnx.prepareStatement("UPDATE Utilisateur SET Pseudo=?, mail = ?, mdp = ?, urlProfil = ? WHERE id=?");
-			insertPartieStatement = cnx.prepareStatement("INSERT INTO partie (JHPartie, nbMobWin) VALUE(now(), ?);",Statement.RETURN_GENERATED_KEYS);
+			insertPartieStatement = cnx.prepareStatement("INSERT INTO partie (JHPartie, nbMobWin, id_deck) VALUE(now(), ?, ?);",Statement.RETURN_GENERATED_KEYS);
 			deleteStatement = cnx.prepareStatement("DELETE FROM ? WHERE ?=?");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,14 +62,21 @@ public class DataBase {
 		
 	}
 	
-	public void addEndGame(boolean userWin, int nbWin) throws SQLException {
-		insertPartieStatement.setInt(1, nbWin);
-		int inserted = insertPartieStatement.executeUpdate();
-		ResultSet res  = insertPartieStatement.getGeneratedKeys();	
-		if(res.next() && inserted>0 ) {
-			var lastId = res.getInt(1);
-			insertStatement.executeUpdate("INSERT INTO joue (id_Utilisateur, id_Partie, win) VALUE("+LogInController.id+","+lastId+","+userWin+");");
-		}
+	public void addEndGame(boolean userWin, int nbWin, int deckStyle)  {
+
+			try {
+				insertPartieStatement.setInt(1, nbWin);
+				insertPartieStatement.setInt(2, deckStyle);
+				int inserted = insertPartieStatement.executeUpdate();
+				ResultSet res  = insertPartieStatement.getGeneratedKeys();	
+				if(res.next() && inserted>0 ) {
+					var lastId = res.getInt(1);
+				insertStatement.executeUpdate("INSERT INTO joue (id_Utilisateur, id_Partie, win) VALUE("+LogInController.id+","+lastId+","+userWin+" );");}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		refreshHistorique();
 		
 

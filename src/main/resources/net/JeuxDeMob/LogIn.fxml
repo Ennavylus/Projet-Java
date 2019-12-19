@@ -16,6 +16,11 @@
             <Image url="@backGround/fondLog.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="adminImage" fitHeight="1300.0" fitWidth="800.0" layoutX="253.0" layoutY="97.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@backGround/4.png" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="log" layoutX="88.0" layoutY="326.0" prefHeight="285.0" prefWidth="356.0">
          <children>
             <ImageView fitHeight="255.0" fitWidth="258.0" layoutX="-6.0" opacity="0.8" pickOnBounds="true">
@@ -48,10 +53,5 @@
          </children>
       </AnchorPane>
       <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goSignIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE" />
-      <ImageView fx:id="adminImage" fitHeight="496.0" fitWidth="279.0" layoutX="397.0" layoutY="78.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@backGround/4.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

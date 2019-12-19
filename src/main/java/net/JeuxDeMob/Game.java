@@ -39,11 +39,13 @@ public class Game {
 			if(partyIsFinish()) {
 					int posPlayerWin = whoWin();
 					boolean userWin = false;
+					int deckStyleDigit = 1;
 					if(whoWin()==0)userWin = true;
 					
 				System.out.println("--------Partie terminer -----------");
-					
-					DataBase.getInstance().addEndGame(userWin, (this.getPlayerList().get(posPlayerWin).getHandFigurine().size()-1));
+					if(InterfaceUserController.styleCards.equals("pony"))deckStyleDigit = 1;
+					if(InterfaceUserController.styleCards.equals("pony"))deckStyleDigit = 2;
+					DataBase.getInstance().addEndGame(userWin, (this.getPlayerList().get(posPlayerWin).getHandFigurine().size()-1),deckStyleDigit);
 					return;
 				}
 
