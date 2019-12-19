@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.JeuxDeMob.TableGameController">
    <children>
-      <ImageView fitHeight="688.0" fitWidth="918.0" pickOnBounds="true">
+      <ImageView fitHeight="695.0" fitWidth="918.0" pickOnBounds="true">
          <image>
             <Image url="@backGround/79366986_503083353892436_3615691885693108224_n.jpg" />
          </image>
@@ -35,7 +35,7 @@
             <Image url="@backGround/Sans%20titre.png" />
          </image>
       </ImageView>
-      <TilePane fx:id="centreTable" layoutX="36.0" layoutY="506.0" prefHeight="60.0" prefWidth="852.0" />
+      <TilePane fx:id="centreTable" layoutX="36.0" layoutY="480.0" prefHeight="60.0" prefWidth="852.0" />
       <Button fx:id="quit" layoutX="62.0" layoutY="27.0" mnemonicParsing="false" onAction="#goQuit" prefHeight="29.0" prefWidth="103.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 16; -fx-font-weight: bold;" text="Quitter" textFill="WHITE">
          <font>
             <Font size="19.0" />

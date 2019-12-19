@@ -41,7 +41,7 @@ public class Player {
 		}
 		else {
 			
-			this.setPseudo("Computer "+countComputer);
+			this.setPseudo("Computer "+(countComputer+1));
 			this.setUser(false);
 			this.setSkin(new ImageView(new Image(getClass().getResourceAsStream("joueur/"+this.chooseSkin()+".png"))));
 		}
@@ -75,7 +75,6 @@ public class Player {
 	
 	public boolean addCard(Card card) {
 		if(card!=null&&this.getHandCards().size()<5) {
-			System.out.println("ok add carte = "+card);
 			this.handCards.add(card);
 			return true;
 		}

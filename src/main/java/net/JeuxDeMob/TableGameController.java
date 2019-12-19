@@ -42,6 +42,7 @@ public class TableGameController {
 	private Game game;
 	private ImageView lastCard;
 	private ArrayList<ImageView> hand;
+	private static boolean yes;
 	
 	private static Player playerReel;
 	private static Player playerPnj1;
@@ -63,16 +64,17 @@ public class TableGameController {
 	static AnchorPane mainStat;
 	static int nbCardsHand;
 	static Label actionToChoiceStat;
+	
 
 	
 	public void initialize() throws SQLException{
 		lastCard=null;
-		this.nbcomputer = 3;
+		this.nbcomputer = InterfaceUserController.nbComputerPlay;
 		this.setStatic();
 		choiceStat.setVisible(false);
 		finishStat.setVisible(false);
 		
-		this.game = new Game("pony", this.nbcomputer);
+		this.game = new Game(InterfaceUserController.styleCards, InterfaceUserController.nbComputerPlay);
 		this.createCenterTable();
 		this.setViewHandCards();
 		this.setPnj(nbcomputer);
@@ -91,32 +93,70 @@ public class TableGameController {
 	}
 	public static void phaseContre(Card card, String player) {
 		cardContre = card.getName();
+		
 
 		actionToChoiceStat.setText(player+" veut vous prendre la figurine "+cardContre+"\nque faite vous?");
 		contrePlayStat.setVisible(true);
+		contrePlayStat.setText("Contre");
 		passPlayStat.setVisible(true);
 		playCardStat.setVisible(false);
 		choiceStat.setVisible(true);
 	}
-	
-	public void contreCard() {
+	public static void phaseContreContre(Card card, String player, boolean phase2) {
+		cardContre = card.getName();
+		yes=phase2;
+		actionToChoiceStat.setText("Vous avez la possibiliter de retenter de prendre la figurine \nque faite vous?");
+		contrePlayStat.setVisible(true);
+		contrePlayStat.setText("Retentez");
+		passPlayStat.setVisible(true);
+		playCardStat.setVisible(false);
+		choiceStat.setVisible(true);
+		
+	}
+	public void contreCard() throws SQLException {
 		choiceStat.setVisible(false);
+		
+		if(yes) {
+			int posPlayer = this.game.howIsFiguring(cardContre);
+			playerReel.addFigurine(this.game.getPlayerList().get(posPlayer).getHandFigurine().get(cardContre));
+			this.game.getPlayerList().get(posPlayer).getHandFigurine().remove(cardContre);
+			this.game.toPioche(this.game.played);
+			this.game.played.getHandCards().remove(this.game.whatNumberCardInHand(cardContre, this.game.played));
+			System.out.println("vous avez double contré");
+			moveFig(whatPlayer(this.game.getPlayerTurn()), handfigStat, cardContre);
+			setViewHandCards();
+			this.game.nextPlayer();
+			yes=false;
+			return;
+		}
+	
 		this.game.getPlayerList().get(0).getHandCards().remove(this.game.whatNumberCardInHand(cardContre,playerReel));
 		this.game.toPioche(playerReel);
+		System.out.println("vous contré");
 		setViewHandCards();
+		this.game.toPioche(this.game.played);
+		if( this.game.whatNumberCardInHand(cardContre, this.game.played)<30) {
+			int posPlayer = this.game.howIsFiguring(cardContre);
+			System.out.println(this.game.played.getPseudo()+" contre votre contre");
+			this.game.played.addFigurine(this.game.getPlayerList().get(posPlayer).getHandFigurine().get(cardContre));
+			this.game.getPlayerList().get(posPlayer).getHandFigurine().remove(cardContre);
+			this.game.played.getHandCards().remove(this.game.whatNumberCardInHand(cardContre, this.game.played));
+			TableGameController.refreshFigPlayer(this.game.playerTurn, posPlayer, cardContre);
+			this.game.toPioche(this.game.played);
+		}
 		this.game.nextPlayer();
 	}
-	public void passPhase() {
+	public void passPhase() throws SQLException {
 		choiceStat.setVisible(false);
-		System.out.println("carte = "+cardContre);
 		this.game.played.addFigurine(this.game.getPlayerList().get(0).getHandFigurine().get(cardContre));
 		this.game.getPlayerList().get(0).getHandFigurine().remove(cardContre);
+		this.game.toPioche(this.game.played);
 		moveFig(whatPlayer(this.game.getPlayerTurn()), handfigStat, cardContre);
 		setViewHandCards();
 		this.game.nextPlayer();
 	}
 	
-	public void playCardButton() {
+	public void playCardButton() throws SQLException {
 		if(lastCard==null)return;
 		String nameCard = lastCard.getImage().toString();
 		choiceStat.setVisible(false);
@@ -201,7 +241,7 @@ public class TableGameController {
 			switch (pos) {
 				case 0 : return handfigStat;
 				case 1: return figurinePnj1Stat;
-				case 2: return figurinePnj1Stat;
+				case 2: return figurinePnj3Stat;
 				default: return null;
 			}
 			
@@ -281,7 +321,7 @@ public class TableGameController {
 			
 			pnj2.setImage(null);
 		}
-		else {
+		if(nbcomputer==3){
 			playerPnj1 = this.game.getPlayerList().get(1);
 			pnj1.setImage(this.playerPnj1.getSkin().getImage());
 			pseudoPnj1.setText(this.playerPnj1.getPseudo());

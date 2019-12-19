@@ -7,7 +7,9 @@ public class DataBase {
 	Connection cnx;
 	// PreparedStatement  for player insert
 	private PreparedStatement insertStatement;
+	private PreparedStatement insertPartieStatement;
 	private PreparedStatement updateStatement;
+	
 	private PreparedStatement deleteStatement;
 	
 	
@@ -18,6 +20,7 @@ public class DataBase {
 			cnx = DriverManager.getConnection(url,user,pswd);
 			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil, admin) VALUE(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			updateStatement = cnx.prepareStatement("UPDATE Utilisateur SET Pseudo=?, mail = ?, mdp = ?, urlProfil = ? WHERE id=?");
+			insertPartieStatement = cnx.prepareStatement("INSERT INTO partie (JHPartie, nbMobWin) VALUE(now(), ?);",Statement.RETURN_GENERATED_KEYS);
 			deleteStatement = cnx.prepareStatement("DELETE FROM ? WHERE ?=?");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,6 +62,41 @@ public class DataBase {
 		
 	}
 	
+	public void addEndGame(boolean userWin, int nbWin) throws SQLException {
+		insertPartieStatement.setInt(1, nbWin);
+		int inserted = insertPartieStatement.executeUpdate();
+		ResultSet res  = insertPartieStatement.getGeneratedKeys();	
+		if(res.next() && inserted>0 ) {
+			var lastId = res.getInt(1);
+			insertStatement.executeUpdate("INSERT INTO joue (id_Utilisateur, id_Partie, win) VALUE("+LogInController.id+","+lastId+","+userWin+");");
+		}
+		refreshHistorique();
+		
+
+	}
+	
+	public void refreshHistorique()  {
+		ResultSet res = this.getInstance().query("select * from(select count(win) as win, count(*) as partiTotal from joue as J where id_utilisateur="+LogInController.id+" group by win) as tab  ;");
+		int total=0;
+		int win=0; 
+		int loose=0;
+		
+		
+			try {
+				if(res.next())
+				win=res.getInt("win");
+				if(res.next())loose=res.getInt("win");
+				total = win+loose;
+				updateStatement.executeUpdate("UPDATE historique SET nbPartie="+total+", Victoire = "+win+", defaite = "+loose+" WHERE id = "+LogInController.id+";");
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	}
+	
 	public User insertUtilisateur(String pseudo, String mail, String mdp) {
 		try {
 			insertStatement.setString(1, pseudo);
@@ -70,6 +108,7 @@ public class DataBase {
 			ResultSet res  = insertStatement.getGeneratedKeys();	
 			if(res.next() && inserted>0 ) {
 				var lastId = res.getInt(1);
+				insertStatement.executeUpdate("INSERT INTO historique (id, nbPartie, Victoire, defaite, id_utilisateur) VALUES ("+lastId+",'0', '0', '0',"+lastId+");");
 				return new User(lastId,pseudo, mail, mdp, 0);
 			}
 		} catch (SQLException e) {
@@ -78,13 +117,18 @@ public class DataBase {
 		return null;
 	}
 	
-	public void updateThis(int id, String focus, String newValue ) throws SQLException {
-		updateStatement.executeUpdate("UPDATE Utilisateur SET "+focus+"= '"+newValue+"'WHERE id="+id+";");
+	public void updateThis(int id, String focus, String newValue ) {
+		try {
+			updateStatement.executeUpdate("UPDATE Utilisateur SET "+focus+"= '"+newValue+"'WHERE id="+id+";");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean clearStat() {
 		try {
-			deleteStatement.executeUpdate("DELETE FROM Historique WHERE id_utilisateur ="+LogInController.id+";");
+			updateStatement.executeUpdate("UPDATE Historique SET nbPartie = 0,Victoire = 0, defaite = 0 WHERE id_utilisateur ="+LogInController.id+";");
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,11 +138,10 @@ public class DataBase {
 	
 	public void deleteUser(int id) {
 		try {
-//			deleteStatement.setString(1, "Utilisateur");
-//			deleteStatement.setString(2, "id");
-//			deleteStatement.setInt(3, id);
-//			deleteStatement.executeUpdate();
+
 			deleteStatement.executeUpdate("DELETE FROM Utilisateur WHERE id="+id+";");
+			deleteStatement.executeUpdate("DELETE FROM Historique WHERE id="+id+";");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

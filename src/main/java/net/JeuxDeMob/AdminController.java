@@ -127,10 +127,9 @@ public class AdminController {
 			this.focusUser.setMdp(newValue);
 		}
 		if(this.focusColumn.equals("admin")) {
-			//int value=Integer.valueOf(newValue);
 			this.focusUser.setAdmin(Integer.valueOf(newValue));
 		}
-		else {
+		if(this.focusColumn.equals("Pseudo")) {
 			this.focusUser.setPseudo(newValue);
 		}
 		

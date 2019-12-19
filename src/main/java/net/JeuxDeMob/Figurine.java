@@ -10,7 +10,7 @@ public class Figurine extends ImageView{
 		this.name = name;
 		this.setImage(new Image(getClass().getResourceAsStream(url)));
 		this.setPreserveRatio(true);
-		this.setFitHeight(70);
+		this.setFitHeight(60);
 	}
 
 

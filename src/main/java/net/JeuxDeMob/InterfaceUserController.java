@@ -35,6 +35,8 @@ public class InterfaceUserController {
 	@FXML
 	ChoiceBox nbPlayers;
 	@FXML AnchorPane main;
+	public static int nbComputerPlay;
+	public static String styleCards;
 	
 	public void initialize(){
 		var db= DataBase.getInstance();
@@ -56,7 +58,9 @@ public class InterfaceUserController {
 			nbLoose.setText(""+nbL.get());
 			faceProfil.setImage(new Image(getClass().getResourceAsStream(res.getString("urlProfil"))));
 			nbPlayers.getItems().addAll(1,2,3);
-			gameMod.getItems().addAll("Partie contre ordinateur","Joueur contre Joueur");
+			gameMod.getItems().addAll("pony","happy");
+			gameMod.getSelectionModel().selectFirst();
+			nbPlayers.getSelectionModel().selectFirst();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,6 +68,9 @@ public class InterfaceUserController {
 		}
 	}
 	public void goGameLoad() throws IOException {
+		styleCards = (String) gameMod.getValue();
+		nbComputerPlay = (int) nbPlayers.getValue();
+		System.out.println(styleCards);
 		App.setRoot("TableGame");
 	}
 	public void goAdminPage() throws IOException {

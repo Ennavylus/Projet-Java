@@ -89,7 +89,7 @@
                   <Font name="Roboto Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="104.0" layoutY="77.0" prefHeight="30.0" prefWidth="144.0" text="Mode de jeux :">
+            <Label layoutX="104.0" layoutY="77.0" prefHeight="30.0" prefWidth="144.0" text="Style des Carte :">
                <font>
                   <Font name="Roboto Bold" size="16.0" />
                </font>
