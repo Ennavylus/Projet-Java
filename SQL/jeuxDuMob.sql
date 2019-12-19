@@ -42,6 +42,30 @@ CREATE TABLE historique(
 
 
 #------------------------------------------------------------
+# Table: Cards
+#------------------------------------------------------------
+
+CREATE TABLE Cards(
+        id   Int  Auto_increment  NOT NULL ,
+        name Varchar (50) NOT NULL ,
+        url  Varchar (50) NOT NULL
+	,CONSTRAINT Cards_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: deck
+#------------------------------------------------------------
+
+CREATE TABLE deck(
+        id      Int  Auto_increment  NOT NULL ,
+        nom     Varchar (50) NOT NULL ,
+        urlCard Varchar (50) NOT NULL
+	,CONSTRAINT deck_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: joue
 #------------------------------------------------------------
 
