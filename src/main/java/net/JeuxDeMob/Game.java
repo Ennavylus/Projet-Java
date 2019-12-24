@@ -4,18 +4,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
-
+/**
+ * this class has all mechanism for this game
+ * @author ennav
+ *
+ */
 public class Game {
 	
 	private TheDeck deck;
 	private ArrayList<Player> playerList;
 	private int nbPlayerTotal;
-	int playerTurn;
+	static int playerTurn;
 	static Player played;
 	
-	
-	
-
+	/**
+	 *  Constructor
+	 *  
+	 * @param style = style of visual card
+	 * @param nbPlayer =  number computer played
+	 * @throws SQLException
+	 */
 	public Game(String style, int nbPlayer) throws SQLException {
 		nbPlayerTotal = nbPlayer+1;
 		this.setDeck(new TheDeck(style));
@@ -32,15 +40,29 @@ public class Game {
 		
 		
 	}
-	
+
+	/**
+	 * this method allows to run turn for the player whose turn, 
+	 * Verify if he has possibility of play, if not go to next player,
+	 * verify if player is user, if user show a small choice window,
+	 * if user is computer, select random card in his hand and verify if hasn't already figurine
+	 * call function toPlayCard with card selected
+	 * and call nextPlayer for to pass next player to game
+	 * 
+	 * @throws SQLException
+	 */
 	public void runTurn() throws SQLException {
 			played = this.getPlayerList().get(getPlayerTurn());
 
 			if(partyIsFinish()) {
+					
 					int posPlayerWin = whoWin();
 					boolean userWin = false;
 					int deckStyleDigit = 1;
 					if(whoWin()==0)userWin = true;
+					TableGameController.finishStat.setVisible(true);;
+					TableGameController.finishStat.setOpacity(1);
+					TableGameController.labelFinishStat.setText("----- Partie Terminer ------\n"+this.getPlayerList().get(posPlayerWin).getPseudo()+" Gagne la partie!!");
 					
 				System.out.println("--------Partie terminer -----------");
 					if(InterfaceUserController.styleCards.equals("pony"))deckStyleDigit = 1;
@@ -82,7 +104,6 @@ public class Game {
 					}
 
 					if(toPlayCard(c.toString())) {
-						
 						nextPlayer();
 					}
 					
@@ -94,6 +115,7 @@ public class Game {
 
 			}
 		}
+	//allows to played select card , verify  if adversary has possibility of counteract and if adversary is user, then act in consequence  
 	public boolean toPlayCard(String card) {
 		int posPlayer = howIsFiguring(card);
 		Player focus = null;
@@ -114,7 +136,7 @@ public class Game {
 					if( whatNumberCardInHand(card, played)<30) {
 						if(played.isUser()) {
 							System.out.println(focus.getPseudo()+"veut tu  double contré");
-							TableGameController.phaseContreContre(played.getHandCards().get(whatNumberCardInHand(card, played)), played.getPseudo(), true);
+							TableGameController.phaseContreContre(played.getHandCards().get(whatNumberCardInHand(card, played)), posPlayer, true);
 							return false;
 						}
 						System.out.println("double contre");
@@ -144,13 +166,14 @@ public class Game {
 		toPioche(played);
 		return true;
 	}
+	// allows to if adversary counteract  to remove card played and pick new card for both player
 	public void contre(Player focus, String card){
 		played.getHandCards().remove(whatNumberCardInHand(card, played));
 		toPioche(played);
 		focus.getHandCards().remove(whatNumberCardInHand(card, focus));
 		toPioche(focus);
 	}
-	//
+	// allows to get in all player who has the most figurine
 	public int  whoWin() {
 		int posPlayer=0;
 		int nbFig = 0;
@@ -196,7 +219,7 @@ public class Game {
 		}
 		return 50;
 	}
-	//view figiguring hand 
+	//view figurine hand 
 	public void viewFiguring() {
 		System.out.println("------Figurine--------");
 		for (Map.Entry mapentry : played.getHandFigurine().entrySet()) {
@@ -261,8 +284,7 @@ public class Game {
 		}
 		return false;
 	}
-
-	// to verifie is all player havent possibilitie of game
+	// to verifies if all player haven't possibilities to play
 	public boolean partyIsFinish(){
 		int count = 0;
 		for(int i = 0; i<this.getNbPlayerTotal(); i++) {
@@ -273,28 +295,25 @@ public class Game {
 		return count==this.getNbPlayerTotal();
 		
 	}
+	// Getter and setter
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
 	public void setPlayerList(ArrayList<Player> playerList) {
 		this.playerList = playerList;
 	}
-	
 	public TheDeck getDeck() {
 		return deck;
 	}
 	public void setDeck(TheDeck deck) {
 		this.deck = deck;
 	}
-	
 	public int getPlayerTurn() {
 		return playerTurn;
 	}
-
 	public void setPlayerTurn(int playerTurn) {
 		this.playerTurn = playerTurn;
 	}
-	
 	public int getNbPlayerTotal() {
 		return nbPlayerTotal;
 	}

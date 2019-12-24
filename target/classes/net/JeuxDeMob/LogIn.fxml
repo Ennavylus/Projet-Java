@@ -52,6 +52,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goSignIn" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE" />
+      <Button fx:id="signIn" layoutX="758.0" layoutY="36.0" mnemonicParsing="false" onAction="#goRegister" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #4AB15C; -fx-background-radius: 8; -fx-font-size: 15; -fx-font-weight: bold;" stylesheets="@style.css" text="Inscription" textFill="WHITE" />
    </children>
 </AnchorPane>

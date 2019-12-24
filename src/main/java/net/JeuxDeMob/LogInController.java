@@ -12,32 +12,23 @@ import javafx.scene.layout.*;
 public class LogInController {
 
 	static Integer id;
-	@FXML
-	TextField pseudo;
 	
-	@FXML
-	PasswordField password;
-	
-	@FXML
-	Button logIn;
+	@FXML TextField pseudo;
+	@FXML PasswordField password;
 	@FXML ImageView adminImage;
-	@FXML
-	Button signIn;
+	@FXML Button logIn;
+	@FXML Button signIn;
+	@FXML Button admin;
 	@FXML AnchorPane log; 
 	@FXML AnchorPane logHome; 
-	@FXML Button admin;
-	@FXML
-	Label error;
+	@FXML Label error;
 	
-	@FXML
-	public void goSignIn() throws IOException {
+
+	// for button , redirects to register page
+	public void goRegister() throws IOException {
 		 App.setRoot("Register");
 	}
-	
-	public void over() {
-		
-	}
-	
+	// if admin detected show new windows for new choice to redirects
 	public void admin() {
 		AnchorPane pane;
 		try {
@@ -48,9 +39,8 @@ public class LogInController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-	
+	// for button , redirects to user page
 	public void goLogByAdmin() {
 		try {
 			App.setRoot("InterfaceUser");
@@ -59,6 +49,7 @@ public class LogInController {
 			e.printStackTrace();
 		}
 	}
+	// for button , if admin to connect  show redirects to admin page
 	public void goAdmin() {
 		try {
 			App.setRoot("admin");
@@ -67,6 +58,10 @@ public class LogInController {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 *  for button , redirects to interface user if all verification is OK page
+	 * @throws IOException
+	 */
 	public void goLogIn() throws IOException {
 		error.setText(null);
 		String pseudolog = pseudo.getText();
@@ -96,12 +91,6 @@ public class LogInController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-
-	
-		
-		
-		
 	}
 
 	

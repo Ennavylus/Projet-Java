@@ -60,7 +60,7 @@ public class AdminController {
 		email.setCellValueFactory(new PropertyValueFactory<User,String>("mail"));
 		mdp.setCellValueFactory(new PropertyValueFactory<User,String>("mdp"));
 		admin.setCellValueFactory(new PropertyValueFactory<User,Integer>("admin"));
-		listUser.getSelectionModel().selectedItemProperty().addListener(new OnSelectUser());
+		//listUser.getSelectionModel().selectedItemProperty().addListener(new OnSelectUser());
 	//	listUser.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		listUser.getSelectionModel().setCellSelectionEnabled(true);
 		//listUser.setEditable(true);
@@ -70,7 +70,11 @@ public class AdminController {
 	
 	
 	
-	
+	/**
+	 * allows to get column click for modify just one data
+	 * @param e
+	 * @throws SQLException
+	 */
 	public void lookClick(MouseEvent e) throws SQLException {
 		TablePosition pos = (TablePosition) listUser.getSelectionModel().getSelectedCells().get(0);
 		int row = pos.getRow();
@@ -94,6 +98,9 @@ public class AdminController {
 
 
 	}
+	/**
+	 *  button to clear game history
+	 */
 	public void goClear() {
 		if(DataBase.getInstance().clearStat()) {
 			nbPlay.set(0);
@@ -102,6 +109,9 @@ public class AdminController {
 			nbLoose.setText(""+nbPlay.get());
 		}
 	}
+	/**
+	 * button for add user
+	 */
 	public void addUser() {
 		String pseudo = inputModify.getText();
 		if(pseudo.length()>2) {
@@ -111,6 +121,10 @@ public class AdminController {
 			inputModify.clear();
 			}	
 	}
+	/**
+	 * button for delete user
+	 * @throws SQLException
+	 */
 	public void deleteUser() throws SQLException {
 		System.out.println(this.focusUser.getId());
 		 DataBase.getInstance().deleteUser(this.focusUser.getId());
@@ -137,7 +151,9 @@ public class AdminController {
 		inputModify.clear();
 	}
 
-
+	/**
+	 * button for go to interface user
+	 */
 	public void goLogByAdmin() {
 		try {
 			App.setRoot("InterfaceUser");
@@ -147,12 +163,4 @@ public class AdminController {
 		}
 	}
 
-
-
-
-	public class OnSelectUser implements ChangeListener<User> {
-		@Override
-		public void changed(ObservableValue<? extends User> observable, User oldValue, User newValue) {
-		}
-	}
 }

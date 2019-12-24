@@ -38,11 +38,13 @@ public class TableGameController {
 	@FXML TilePane figurinePnj2;	
 	@FXML TilePane figurinePnj3;
 	@FXML Label actionToChoice;
+	@FXML Label labelFinish;
 	
 	private Game game;
 	private ImageView lastCard;
 	private ArrayList<ImageView> hand;
 	private static boolean yes;
+	private static int playerFocus;
 	
 	private static Player playerReel;
 	private static Player playerPnj1;
@@ -51,6 +53,7 @@ public class TableGameController {
 	private static int nbcomputer;
 	private static String cardContre;
 	
+	static Label labelFinishStat;
 	static AnchorPane choiceStat;
 	static Button playCardStat;
 	static Button passPlayStat;
@@ -68,6 +71,7 @@ public class TableGameController {
 
 	
 	public void initialize() throws SQLException{
+		
 		lastCard=null;
 		this.nbcomputer = InterfaceUserController.nbComputerPlay;
 		this.setStatic();
@@ -102,9 +106,10 @@ public class TableGameController {
 		playCardStat.setVisible(false);
 		choiceStat.setVisible(true);
 	}
-	public static void phaseContreContre(Card card, String player, boolean phase2) {
+	public static void phaseContreContre(Card card, int playerFo, boolean phase2) {
 		cardContre = card.getName();
 		yes=phase2;
+		playerFocus = playerFo;
 		actionToChoiceStat.setText("Vous avez la possibiliter de retenter de prendre la figurine \nque faite vous?");
 		contrePlayStat.setVisible(true);
 		contrePlayStat.setText("Retentez");
@@ -123,7 +128,7 @@ public class TableGameController {
 			this.game.toPioche(this.game.played);
 			this.game.played.getHandCards().remove(this.game.whatNumberCardInHand(cardContre, this.game.played));
 			System.out.println("vous avez double contré");
-			moveFig(whatPlayer(this.game.getPlayerTurn()), handfigStat, cardContre);
+			moveFig(handfigStat ,whatPlayer( playerFocus), cardContre);
 			setViewHandCards();
 			this.game.nextPlayer();
 			yes=false;
@@ -338,6 +343,7 @@ public class TableGameController {
 		
 	}
 	 public void setStatic() {
+		 	labelFinishStat = labelFinish;
 			actionToChoiceStat = actionToChoice;
 			mainStat = main;
 			finishStat  = finish ;

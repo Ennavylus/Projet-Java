@@ -21,7 +21,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LogIn"));
-    	//scene = new Scene(loadFXML("admin"));
        
         stage.setScene(scene);
         stage.setResizable(false);
@@ -31,23 +30,6 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
-//    	
-//    	int i = 10;
-//    	int j = 20;
-//    	int k = 30;
-//    	
-//    	test = new HashMap<String, Integer >();
-//    	test2 = new HashMap<String, Integer >();
-//    	test.put("i", i);
-//    	test.put("j", j);
-//    	test.put("k", k);
-//    	
-//    	test2.put("k", test.get("k"));
-//    	test.remove("k");
-//    	for (Map.Entry mapentry : test.entrySet()) {
-//			System.out.println("test = "+mapentry.getKey().toString()); }
-//     	for (Map.Entry mapentry : test2.entrySet()) {
-//			System.out.println("test2 = "+mapentry.getKey().toString()); }
        launch();
         
         

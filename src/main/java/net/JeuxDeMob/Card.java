@@ -4,30 +4,31 @@ import java.io.InputStream;
 
 import javafx.scene.image.*;
 
+/**
+ * this Class is for visual carte for the game , 
+ * this extends Class Image
+ * @author Ennavylus
+ *
+ */
 public class Card extends Image {
 	
-	private String url;
 	private String name;
 	
 	
 	public Card(InputStream test,String name) {
 		super(test);
-		 // getClass().getResourceAsStream(url);
-		//new Image(test);
-		//super(test);
-		//this.new Card(test);
 		this.setName(name);
 		
 	}
-	
+	// Redefine method to String  
 	public String toString() {
 		return name;
 	}
+	// Getter and setter
+
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;

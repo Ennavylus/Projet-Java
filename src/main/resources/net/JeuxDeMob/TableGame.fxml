@@ -98,10 +98,15 @@
       <TilePane fx:id="figurinePnj2" layoutX="339.0" layoutY="110.0" prefHeight="200.0" prefWidth="50.0" />
       <TilePane fx:id="figurinePnj3" layoutX="681.0" layoutY="141.0" prefHeight="200.0" prefWidth="50.0" />
       <TilePane fx:id="figurinePnj1" layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="50.0" />
-      <ImageView fx:id="finish" fitHeight="688.0" fitWidth="918.0" opacity="0.0" pickOnBounds="true">
+      <ImageView fx:id="finish" fitHeight="300.0" fitWidth="518.0" layoutX="197.0" layoutY="142.0" opacity="0.0" pickOnBounds="true">
          <image>
-            <Image url="@backGround/LoadTable.jpg" />
+            <Image url="@backGround/Contenerblanc.png" />
          </image>
       </ImageView>
+      <Label fx:id="labelFinish" layoutX="262.0" layoutY="178.0" prefHeight="217.0" prefWidth="378.0" wrapText="true">
+         <font>
+            <Font name="Roboto Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

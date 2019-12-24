@@ -10,27 +10,27 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Player {
+	
 	private String pseudo;
 	private int idPlayer;
-	//private ArrayList<Card> handCard;
 	private boolean user;
 	private boolean youTurn;
 	private ResultSet res;
 	private int score;
 	private ImageView skin;
-	private static int[] previousSkin;
-	private static int countComputer;
-	//private ArrayList<Figurine> handFig;
 	private HashMap<String, Figurine> handFigurine;
 	private ArrayList<Card> handCards;
 	private boolean noPossibilities;
+	
+	private static int[] previousSkin;
+	private static int countComputer;
 
 	public Player(boolean user ) {
-		previousSkin = new int[3];
 		if(user) {
+			previousSkin = new int[3];
 			countComputer = 0;
+			previousSkin[0]=100;			
 			this.setIdPlayer(LogInController.id);
-			previousSkin[0]=100;
 			this.setUser(true);
 			res = DataBase.getInstance().query("SELECT pseudo FROM utilisateur WHERE id="+this.getIdPlayer());
 				try {
@@ -40,7 +40,6 @@ public class Player {
 				}
 		}
 		else {
-			
 			this.setPseudo("Computer "+(countComputer+1));
 			this.setUser(false);
 			this.setSkin(new ImageView(new Image(getClass().getResourceAsStream("joueur/"+this.chooseSkin()+".png"))));
@@ -48,23 +47,24 @@ public class Player {
 		this.setNoPossibilities(false);
 		this.setScore(0);
 		this.setYouTurn(false);
-		//this.setHandCard(new ArrayList<Card>());
-		//this.setHandFig(new ArrayList<Figurine>());
 		this.setHandFigurine(new HashMap<String, Figurine>());
 		this.setHandCards(new ArrayList<Card>());
 	}
 	
-	
-		
+	// allows to define Skin of computer 
 	public int chooseSkin() {
 		int rand ;
 		int count;
 		do {
 			rand =new Random().nextInt(8);
+			System.out.println("rand = "+rand);
 			count = 0;
-			
-			for(int i = 0; i<3; i++) {
-				if(rand==previousSkin[i])count++;
+			for(int i = 0; i<countComputer; i++) {
+				if(rand==previousSkin[i]) {
+					count++;
+					System.out.println("rand = "+rand+" pevious = "+previousSkin[i]);
+				}
+
 			}	
 		}while(count>0);
 		previousSkin[countComputer] = rand;
@@ -72,7 +72,7 @@ public class Player {
 		return rand;
 	}
 	
-	
+	// allows to add card in hand card after pick in deck
 	public boolean addCard(Card card) {
 		if(card!=null&&this.getHandCards().size()<5) {
 			this.handCards.add(card);
@@ -80,7 +80,7 @@ public class Player {
 		}
 		return false;	
 	}
-	
+	// allows to add figurine in hand figurine after play card
 	public boolean addFigurine(Figurine figurine) {
 		if(figurine!=null) {
 			this.handFigurine.put(figurine.getName(), figurine);
@@ -90,16 +90,7 @@ public class Player {
 	}
 
 	
-	
-	
-	
-//	public ArrayList<Card> getHandCard() {
-//		return handCard;
-//	}
-//
-//	public void setHandCard(ArrayList<Card> handCard) {
-//		this.handCard = handCard;
-//	}
+	// Getter and setter
 	public boolean isUser() {
 		return user;
 	}
@@ -141,13 +132,6 @@ public class Player {
 		this.skin = skin;
 	}
 
-//	public ArrayList<Figurine> getHandFig() {
-//		return handFig;
-//	}
-//	public void setHandFig(ArrayList<Figurine> handFig) {
-//		this.handFig = handFig;
-//	}
-
 	public HashMap<String, Figurine> getHandFigurine() {
 		return handFigurine;
 	}
@@ -162,26 +146,11 @@ public class Player {
 		this.handCards = handCards;
 	}
 
-
-
 	public boolean isNoPossibilities() {
 		return noPossibilities;
 	}
-
-
-
 	public void setNoPossibilities(boolean noPossibilities) {
 		this.noPossibilities = noPossibilities;
 	}
 	
-//	public boolean addCardToPlayer(Player player) {
-//		if(player.getHandCard().get(0)!=null&&this.getHandCard().get(4)==null) {
-//			int rand = new Random().nextInt(5);
-//			this.addCard(player.getHandCard().get(rand));
-//			player.getHandCard().remove(rand);	
-//			return true;
-//		}
-//		return false;
-//		
-//	}
 }

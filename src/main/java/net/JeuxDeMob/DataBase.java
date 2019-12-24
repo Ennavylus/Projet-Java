@@ -61,7 +61,12 @@ public class DataBase {
 		return res;
 		
 	}
-	
+	/**
+	 *  allows to save in data base result of the game
+	 * @param userWin this boolean if user win
+	 * @param nbWin = integer correspond to the number figurine to win
+	 * @param deckStyle =  correspond of the visual theme of card
+	 */
 	public void addEndGame(boolean userWin, int nbWin, int deckStyle)  {
 
 			try {
@@ -78,12 +83,13 @@ public class DataBase {
 			}
 		
 		refreshHistorique();
-		
-
 	}
 	
+/**
+ * allows to refresh historique in data base for the number of win and loose game
+ */
 	public void refreshHistorique()  {
-		ResultSet res = this.getInstance().query("select * from(select count(win) as win, count(*) as partiTotal from joue as J where id_utilisateur="+LogInController.id+" group by win) as tab  ;");
+		ResultSet res = this.getInstance().query("select count(win) from joue as J where id_utilisateur="+LogInController.id+" and win = true;");
 		int total=0;
 		int win=0; 
 		int loose=0;
@@ -91,8 +97,9 @@ public class DataBase {
 		
 			try {
 				if(res.next())
-				win=res.getInt("win");
-				if(res.next())loose=res.getInt("win");
+				win=res.getInt(1);
+				res = this.getInstance().query("select count(win) from joue as J where id_utilisateur="+LogInController.id+" and win = false;");
+				if(res.next())loose=res.getInt(1);
 				total = win+loose;
 				updateStatement.executeUpdate("UPDATE historique SET nbPartie="+total+", Victoire = "+win+", defaite = "+loose+" WHERE id = "+LogInController.id+";");
 				
@@ -103,7 +110,14 @@ public class DataBase {
 			}
 
 	}
-	
+	/**
+	 * allows to insert new user in data base
+	 * 
+	 * @param pseudo = String  pseudo for new user
+	 * @param mail = String  mail for new user
+	 * @param mdp = String password for new user
+	 * @return new user if insert is ok
+	 */
 	public User insertUtilisateur(String pseudo, String mail, String mdp) {
 		try {
 			insertStatement.setString(1, pseudo);
@@ -123,7 +137,12 @@ public class DataBase {
 		}
 		return null;
 	}
-	
+	/**
+	 * allows to modify one data in data bases for admin interface
+	 * @param id = integer correspond id for user to modify
+	 * @param focus = data focus change
+	 * @param newValue =  new value for change
+	 */
 	public void updateThis(int id, String focus, String newValue ) {
 		try {
 			updateStatement.executeUpdate("UPDATE Utilisateur SET "+focus+"= '"+newValue+"'WHERE id="+id+";");
@@ -132,17 +151,24 @@ public class DataBase {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * allows to clear game history 
+	 * @return true if clear is ok
+	 */
 	public boolean clearStat() {
 		try {
 			updateStatement.executeUpdate("UPDATE Historique SET nbPartie = 0,Victoire = 0, defaite = 0 WHERE id_utilisateur ="+LogInController.id+";");
+			deleteStatement.executeUpdate("DELETE FROM joue WHERE id_Utilisateur="+LogInController.id+";");
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
+	/**
+	 * allows to delete user in data bases
+	 * @param id = id for user to delete
+	 */
 	public void deleteUser(int id) {
 		try {
 
@@ -153,7 +179,13 @@ public class DataBase {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * allows to modify user profile in database in user interface
+	 * @param pseudo 
+	 * @param mail
+	 * @param mdp
+	 * @param url for new picture profile
+	 */
 	public void updateMe(String pseudo, String mail, String mdp, String url) {
 		try {
 			updateStatement.setString(1, pseudo );

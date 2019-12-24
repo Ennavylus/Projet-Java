@@ -14,29 +14,23 @@ public class InterfaceUserController {
 	protected IntegerProperty nbPlay;
 	protected IntegerProperty nbW;
 	protected IntegerProperty nbL;
-	@FXML
-	Button clear;
-	@FXML
-	Button modify;
-	@FXML Button disconnect;
-	@FXML Button goAdmin;
-	@FXML
-	Label pseudo;
-	@FXML
-	Label nbPlayed;
-	@FXML
-	Label nbWin;
-	@FXML
-	Label nbLoose;
-	@FXML
-	ImageView faceProfil;
-	@FXML
-	ChoiceBox gameMod;
-	@FXML
-	ChoiceBox nbPlayers;
-	@FXML AnchorPane main;
 	public static int nbComputerPlay;
 	public static String styleCards;
+	
+	@FXML Button clear;
+	@FXML Button modify;
+	@FXML Button disconnect;
+	@FXML Button goAdmin;
+	@FXML Label pseudo;
+	@FXML Label nbPlayed;
+	@FXML Label nbWin;
+	@FXML Label nbLoose;
+	@FXML ImageView faceProfil;
+	@FXML ChoiceBox gameMod;
+	@FXML ChoiceBox nbPlayers;
+	@FXML AnchorPane main;
+	
+
 	
 	public void initialize(){
 		var db= DataBase.getInstance();
@@ -67,21 +61,30 @@ public class InterfaceUserController {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * launch game with number computer and style of carde game
+	 * @throws IOException
+	 */
 	public void goGameLoad() throws IOException {
 		styleCards = (String) gameMod.getValue();
 		nbComputerPlay = (int) nbPlayers.getValue();
 		System.out.println(styleCards);
 		App.setRoot("TableGame");
 	}
+	//button for go in admin interface
 	public void goAdminPage() throws IOException {
 		App.setRoot("admin");
 	}
+	// Button for disconnect user and go in log in page
 	public void goDisconnect() throws IOException {
 		 App.setRoot("LogIn");
 	}
+	// button for go page to modify user data
 	public void goModify() throws IOException {
 		 App.setRoot("modifyUser");
 	}
+	// button for clear all game history
 	public void goClear() {
 		if(DataBase.getInstance().clearStat()) {
 			nbPlay.set(0);
