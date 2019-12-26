@@ -9,31 +9,22 @@ import javafx.scene.control.*;
 
 
 public class RegisterController {
-	@FXML
-	Button inscription;
+	@FXML Button inscription;
+	@FXML Button annuler;
+	@FXML TextField pseudo;
+	@FXML TextField mail;
+	@FXML PasswordField password;
+	@FXML PasswordField passwordConfirm;
+	@FXML Label errorPseudo;
+	@FXML Label errorPass;
+	@FXML Label errorMail;
 	
-	@FXML
-	Button annuler;
-	@FXML
-	TextField pseudo;
-	@FXML
-	TextField mail;
-	@FXML
-	PasswordField password;
-	@FXML
-	PasswordField passwordConfirm;
-	@FXML
-	Label errorPseudo;
-	@FXML
-	Label errorPass;
-	@FXML
-	Label errorMail;
-	
+	// for button , redirect in logIn page
 	public void returnLogIn() throws IOException {
 		 App.setRoot("LogIn");
 	}
 	
-
+	// for button, allows to verify all data to given by new user, and if all OK add new user in data bases
 	public void valideInscription() {
 		errorPseudo.setText(null);
 		errorMail.setText(null);
@@ -65,19 +56,15 @@ public class RegisterController {
 			e.printStackTrace();
 		}
 	
-	if(count==0) {
-		DataBase.getInstance().insertUtilisateur(pseudoLog, email, passLog);
-		try {
-			App.setRoot("LogIn");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(count==0) {
+			DataBase.getInstance().insertUtilisateur(pseudoLog, email, passLog);
+			try {
+				App.setRoot("LogIn");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-	}
 
-		
-		
-		
 	}
 	
 }

@@ -57,12 +57,10 @@ public class Player {
 		int count;
 		do {
 			rand =new Random().nextInt(8);
-			System.out.println("rand = "+rand);
 			count = 0;
 			for(int i = 0; i<countComputer; i++) {
 				if(rand==previousSkin[i]) {
 					count++;
-					System.out.println("rand = "+rand+" pevious = "+previousSkin[i]);
 				}
 
 			}	

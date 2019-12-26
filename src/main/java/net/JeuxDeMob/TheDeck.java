@@ -13,12 +13,17 @@ public class TheDeck {
 	
 	private ArrayList<Card> deck;
 	private HashMap<String, Figurine> deckFigurine;
-	//private ArrayList<Figurine> figurine;
 	private String[] listUrl;
 	private ArrayList<Card> defausse;
 	private int countCard;
 	
 	
+	
+	/**
+	 *  Create new deck of  fifty five card  with style to given,  and shake deck , and delete 5 card 
+	 * @param nomDeck style to given
+	 * @throws SQLException
+	 */
 	TheDeck(String nomDeck) throws SQLException{
 		var db = DataBase.getInstance();
 		ResultSet res = db.query("Select name, url from card ;");
@@ -45,11 +50,6 @@ public class TheDeck {
 			this.getDeck().remove(i);
 			this.countCard--;
 		}
-		//for(int i = 0; i<deck.size(); i++) {
-			//System.out.println("carte "+i+" = "+ deck.get(i));
-			
-     	//	}
-        
 	}
 	
 	

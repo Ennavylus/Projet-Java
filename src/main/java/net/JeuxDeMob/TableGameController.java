@@ -71,13 +71,11 @@ public class TableGameController {
 
 	
 	public void initialize() throws SQLException{
-		
 		lastCard=null;
 		this.nbcomputer = InterfaceUserController.nbComputerPlay;
 		this.setStatic();
 		choiceStat.setVisible(false);
 		finishStat.setVisible(false);
-		
 		this.game = new Game(InterfaceUserController.styleCards, InterfaceUserController.nbComputerPlay);
 		this.createCenterTable();
 		this.setViewHandCards();
@@ -87,7 +85,8 @@ public class TableGameController {
 	}
 	
 
-	
+	// ------------------ Show windows to choice game user -----------------
+	// show windows for played select card
 	public static void phase1() {
 		choiceStat.setVisible(true);
 		actionToChoiceStat.setText("Selectionner une carte a jouer");
@@ -95,10 +94,9 @@ public class TableGameController {
 		playCardStat.setVisible(true);
 		passPlayStat.setVisible(false);
 	}
+	// show windows if user has possibility of counteract
 	public static void phaseContre(Card card, String player) {
 		cardContre = card.getName();
-		
-
 		actionToChoiceStat.setText(player+" veut vous prendre la figurine "+cardContre+"\nque faite vous?");
 		contrePlayStat.setVisible(true);
 		contrePlayStat.setText("Contre");
@@ -106,6 +104,7 @@ public class TableGameController {
 		playCardStat.setVisible(false);
 		choiceStat.setVisible(true);
 	}
+	// show windows if adversary counteract card user and if user has possibility played another card
 	public static void phaseContreContre(Card card, int playerFo, boolean phase2) {
 		cardContre = card.getName();
 		yes=phase2;
@@ -116,11 +115,10 @@ public class TableGameController {
 		passPlayStat.setVisible(true);
 		playCardStat.setVisible(false);
 		choiceStat.setVisible(true);
-		
 	}
+	// for button "contre", if user counter verify if computer has possibility of counteract  and move figurine if no couteract 
 	public void contreCard() throws SQLException {
 		choiceStat.setVisible(false);
-		
 		if(yes) {
 			int posPlayer = this.game.howIsFiguring(cardContre);
 			playerReel.addFigurine(this.game.getPlayerList().get(posPlayer).getHandFigurine().get(cardContre));
@@ -151,6 +149,7 @@ public class TableGameController {
 		}
 		this.game.nextPlayer();
 	}
+	// for button, if user choice is not to counter
 	public void passPhase() throws SQLException {
 		choiceStat.setVisible(false);
 		this.game.played.addFigurine(this.game.getPlayerList().get(0).getHandFigurine().get(cardContre));
@@ -160,7 +159,7 @@ public class TableGameController {
 		setViewHandCards();
 		this.game.nextPlayer();
 	}
-	
+	// for button , play card to selected
 	public void playCardButton() throws SQLException {
 		if(lastCard==null)return;
 		String nameCard = lastCard.getImage().toString();
@@ -170,8 +169,6 @@ public class TableGameController {
 		this.lastCard=null;
 		if(this.game.toPlayCard(nameCard))this.game.nextPlayer();
 		setViewHandCards();
-		
-		;
 	}
 	
 	// Interaction if click on card
@@ -191,7 +188,6 @@ public class TableGameController {
 		}
 		lastCard =card;
 		playCard.setDisable(this.game.inHandFigurine(lastCard.getImage().toString(),this.game.getPlayerList().get(0)));
-		//playCard.setVisible(!this.game.inHandFigurine(lastCard.getImage().toString(),this.game.getPlayerList().get(0)));
 	}
 
 	// Interaction On Hover
@@ -215,18 +211,6 @@ public class TableGameController {
 		}
 	}
 	
-//	public static void refreshListFig(Player p, VBox vBox) {
-//		String[] listHand = new String[10];
-//		int i = 0;
-//		for (Map.Entry mapentry : p.getHandFigurine().entrySet()) {
-//			listHand[i] = mapentry.getKey().toString() ; 
-//			i++;
-//		}
-//		for(String s:listHand) {
-//			vBox.getChildren().add(p.getHandFigurine().get(s));
-//		}
-//	
-//	}
 	// allows to refsh figuring off all;
 	public static void moveFig(TilePane gamer, TilePane focusPlayer, String nameFig) {
 		int i; 
@@ -236,6 +220,7 @@ public class TableGameController {
 			}	
 		}
 	}
+	// 	gives the right tilepane according to the number of players
 	public static TilePane whatPlayer(int pos) {
 		if(nbcomputer==1) {
 			if(pos == 0)return handfigStat;
@@ -262,6 +247,7 @@ public class TableGameController {
 		}
 		return null;
 	}
+	// refresh visual if figurine moved
 	public static void refreshFigPlayer(int gamer,int posFocus, String name) {
 		if(posFocus<50) {
 			moveFig(whatPlayer(gamer), whatPlayer(posFocus), name);
@@ -277,15 +263,15 @@ public class TableGameController {
 		
 	}
 
-	// Creation on view TableGame
+	//------------ Creation on view TableGame-----------------
+	// place in center table all figurines
 	private void createCenterTable() {
 		String []listeColor = {"rose","rouge","gris","noir","vert","orange","jaune","blanc","bleu","violet","marron"};
 		for(String s : listeColor) {
 			centreTable.getChildren().add(this.game.getDeck().getDeckFigurine().get(s));
-
 		}
 	}
-
+	// set  visual of hand's card user
 	private void setViewHandCards() {
 		nbCardsHand = 0;
 		viewCard(card0);
@@ -293,20 +279,19 @@ public class TableGameController {
 		viewCard(card2);
 		viewCard(card3);
 		viewCard(card4);
-
 	}
+	// set visual card 
 	public boolean viewCard(ImageView card) {
 		if(nbCardsHand==this.game.getPlayerList().get(0).getHandCards().size()) {
 			card.setVisible(false);
-			//card.setImage(null);
 			return false;
 		}
 		card.setImage(null);
 		card.setImage(this.game.getPlayerList().get(0).getHandCards().get(nbCardsHand));
 		nbCardsHand++;
 		return true;
-		
 	}
+	// set visual skin  for all computer played with the right places in table according to the number of players
 	public void setPnj(int nbcomputer) {
 		if(nbcomputer==1) {
 			playerPnj1 = this.game.getPlayerList().get(1);
@@ -342,6 +327,7 @@ public class TableGameController {
 		}
 		
 	}
+	// according ellement of view with static variable
 	 public void setStatic() {
 		 	labelFinishStat = labelFinish;
 			actionToChoiceStat = actionToChoice;
@@ -359,7 +345,7 @@ public class TableGameController {
 
 	 }
 	
-	//Getteur and setteur
+	//Getter and setter
 	public ArrayList<ImageView> getHand() {
 		return hand;
 	}
