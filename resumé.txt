@@ -1,50 +1,62 @@
-Projet java 
+﻿Projet java 
 
-Indroduction
+Introduction
 
-    Mon projet sera un jeux de style jeux de carte en multijoueur( 1 a 4 joueur)
-l'utilisateur pour jouer contre une IA ou d'autre joueur 
+    Mon projet sera un jeu de style jeux de carte en multijoueur(1 à 4  joueur).
+L'utilisateur pour jouer contre 1 ou plusieurs ordinateurs.  
 
 
 
-Language utiliser
+Langage utiliser
 
-    le projet sera coder en java/javaFX avec une base de donnée MySQL
+Le projet est codé en java/javaFX avec une base de données MySQL
+- Le java/javaFX pour le jeu 
+- La base de données sera utilisée pour la gestion des utilisateur qu’un historique de victoire et de défaite.
 
-    le java/javaFX pour le jeux, le serveur et client
-    et la base de donnee afin d'avoir un historique de victoire et de defaite, le joueur gagnant ainsi que le nom du ou des 
-    joueurs de la partie
-    
 
-presentation du jeux
+Logiciel utiliser 
 
-   Principe du jeux 
+- Figma pour la réalisation de la maquette 
+- Le logiciel Eclipse a été utiliser en tant qu’IDE, 
+- Scène Builder pour l’interface graphique,
+- MySQL WorkBench pour la gestion de la base de données.
+- Jmerise pour la mise en place du MCD 
+
+Présentation du jeux
+
+   Principe du jeux (Jeu du Kangourou)
 
     Le jeu est composé de 55 cartes (11 couleurs *5 cartes) et de 11 figurines de couleur (correspondant au 11 couleur des carte)
 
-    Les 11 figurines son disposées au milieu de la table
-    on distribue a chaque joueur 5 cartes, et 5 carte sont ecarter du jeux,
+    Les 11 figurines sont disposées au milieu de la table
+    On distribue à chaque joueur 5 cartes, et 5 cartes sont écarter du jeu,
 
-    Le but du jeux est de recuper le maximum de figurine,
+    Le but du jeu est de récupérer le maximum de figurine,
 
     Pour récupérer une figurine il faut jouer une carte de la couleur correspondante, la figurine est ensuite placer devant le joueur,
-    Il peut également tenter de récupérer une figurine qui appartient déjà à un autre joueur, 
+    Il peut également tenter de prendre une figurine qui appartient déjà à un autre joueur, 
     Ce joueur en question a la possibilité de contrer l'action en jouant lui-même une carte de la même couleur en réponse, 
-    À la fin de chaque tour on reproche le nombre de carte jouer pendant le tour de jeux
+    À la fin de chaque tour on re-pioche le nombre de carte jouer pendant le tour de jeux afin de toujours terminer le tour avec 5 cartes en main, sauf si la pioche ne le permet plus
 
     Le jeu se joue chacun son tour jusqu'à ce qu'il n'y ait plus la possibilité de jouer de carte, 
-     on comptabilise ensuite le nombre de figurine devant chaque joueurs
+     On comptabilise ensuite le nombre de figurine devant chaque joueur.
 
 
 
-presentation des etape de developement 
 
-    - Realisation de la maquette tu plateau de jeux
-    - Realistation du MCD  de la base de donnée
-    - Conception du programe
-        
-        La Conception du programe va ce derouler en plusieur etape
-            - Creation d'un mode Joueur VS IA
-            - Mise en place d'un mode joueur VS joueur
-            - Mise en place de Joueur VS plusieur joueurs
+
+
+Présentation des étapes de développement 
+
+       - Création du résumé de projet
+       - Réalisation de la maquette tu plateau de jeux
+       - Réalisation du MCD de la base de données
+	- mise en place de la base de données
+       - Conception du programme
+       	
+     		- Création et mise en place de la création, connexion et interface utilisateur
+		- programmation du jeu
+		- Création de l’interface administrateur
+	- Création du Readme
+	
 
