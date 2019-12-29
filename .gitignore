@@ -4,3 +4,5 @@ bin/
 *.metadata
 *.settings
 /target/
+/src/main/resources/net/JeuxDeMob/prof/
+

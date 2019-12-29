@@ -123,7 +123,7 @@ public class DataBase {
 			insertStatement.setString(1, pseudo);
 			insertStatement.setString(2, mail);
 			insertStatement.setString(3, mdp);
-			insertStatement.setString(4, "prof/prof.png");
+			insertStatement.setString(4, "backGround/prof.png");
 			insertStatement.setInt(5, 0);
 			int inserted = insertStatement.executeUpdate();
 			ResultSet res  = insertStatement.getGeneratedKeys();	
