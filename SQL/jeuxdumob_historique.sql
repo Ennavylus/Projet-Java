@@ -31,7 +31,7 @@ CREATE TABLE `historique` (
   `defaite` int(11) DEFAULT NULL,
   `id_utilisateur` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `historique` (
 
 LOCK TABLES `historique` WRITE;
 /*!40000 ALTER TABLE `historique` DISABLE KEYS */;
-INSERT INTO `historique` VALUES (1,0,0,0,1),(26,0,0,0,26);
+INSERT INTO `historique` VALUES (1,5,2,3,1),(26,4,2,2,26),(27,3,2,1,27),(28,4,2,2,28),(29,3,2,1,29);
 /*!40000 ALTER TABLE `historique` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-19 16:29:42
+-- Dump completed on 2019-12-29 17:48:27

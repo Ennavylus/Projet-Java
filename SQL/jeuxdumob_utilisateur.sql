@@ -33,7 +33,7 @@ CREATE TABLE `utilisateur` (
   `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pseudo` (`Pseudo`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `utilisateur` (
 
 LOCK TABLES `utilisateur` WRITE;
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
-INSERT INTO `utilisateur` VALUES (1,'Ennavylus','Ennavylus@gmail.com','56421988','prof/profilid1.jpg',1),(26,'Sulyvanne','Sulyvanne@gmail.com','5642','prof/prof.png',0);
+INSERT INTO `utilisateur` VALUES (1,'Admin','admin@gmail.com','admin','prof/enna.png',1),(26,'user1','user1@gmail.com','user','backGround/prof.png',0),(27,'user2','user2@gmail.com','user','backGround/prof.png',0),(28,'user3','Paul@gmail.com','user','backGround/prof.png',0),(29,'user4','user4@gmail.com','user','backGround/prof.png',0),(30,'user5','lala@gmail.com','user','backGround/prof.png',0);
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-19 16:29:42
+-- Dump completed on 2019-12-29 17:48:26

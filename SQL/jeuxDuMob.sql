@@ -8,10 +8,12 @@
 #------------------------------------------------------------
 
 CREATE TABLE Utilisateur(
-        id     Int  Auto_increment  NOT NULL ,
-        Pseudo Varchar (50) NOT NULL ,
-        mail   Varchar (60) NOT NULL ,
-        mdp    Varchar (50) NOT NULL
+        id        Int  Auto_increment  NOT NULL ,
+        Pseudo    Varchar (50) NOT NULL ,
+        mail      Varchar (60) NOT NULL ,
+        mdp       Varchar (50) NOT NULL ,
+        urlProfil Text NOT NULL ,
+        admin     Bool NOT NULL
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -70,7 +72,7 @@ CREATE TABLE deck(
 #------------------------------------------------------------
 
 CREATE TABLE joue(
-        id        Int NOT NULL ,
+        id_Utilisateur       Int NOT NULL ,
         id_Partie Int NOT NULL ,
         win       Bool NOT NULL
 	,CONSTRAINT joue_PK PRIMARY KEY (id,id_Partie)
