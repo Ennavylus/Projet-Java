@@ -23,6 +23,8 @@ Voici mon projet Java pour le Callac Soft College Session 9
  Rendez vous sur la page principale du projet , puis copiez l'Url
 
  <img src="imageReadme\clonegit.png" width="350">
+ 
+ ![alt text] (imageReadme\clonegit.png "title")
 
  
 ### Lancez ECLIPSE
