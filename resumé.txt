@@ -2,15 +2,15 @@
 
 Introduction
 
-    Mon projet sera un jeu de style jeux de carte en multijoueur(1 à 4  joueur).
+    Mon projet sera un jeu de style jeux de carte en multijoueur (1 à 4 joueurs).
 L'utilisateur pour jouer contre 1 ou plusieurs ordinateurs.  
 
 
 
 Langage utiliser
 
-Le projet est codé en java/javaFX avec une base de données MySQL
-- Le java/javaFX pour le jeu 
+Le projet est codé en java/java FX avec une base de données MySQL
+- Le java/java FX pour le jeu 
 - La base de données sera utilisée pour la gestion des utilisateur qu’un historique de victoire et de défaite.
 
 
@@ -19,10 +19,10 @@ Logiciel utiliser
 - Figma pour la réalisation de la maquette 
 - Le logiciel Eclipse a été utiliser en tant qu’IDE, 
 - Scène Builder pour l’interface graphique,
-- MySQL WorkBench pour la gestion de la base de données.
+- MySQL Workbench pour la gestion de la base de données.
 - Jmerise pour la mise en place du MCD 
 
-Présentation du jeux
+Présentation du jeu
 
    Principe du jeux (Jeu du Kangourou)
 
@@ -51,7 +51,7 @@ Présentation des étapes de développement
        - Création du résumé de projet
        - Réalisation de la maquette tu plateau de jeux
        - Réalisation du MCD de la base de données
-	- mise en place de la base de données
+	 - mise en place de la base de données
        - Conception du programme
        	
      		- Création et mise en place de la création, connexion et interface utilisateur
