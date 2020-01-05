@@ -62,7 +62,7 @@ public class Game {
 					if(whoWin()==0)userWin = true;
 					TableGameController.finishStat.setVisible(true);;
 					TableGameController.finishStat.setOpacity(1);
-					TableGameController.labelFinishStat.setText("----- Partie Terminer ------\n"+this.getPlayerList().get(posPlayerWin).getPseudo()+" Gagne la partie!!");
+					TableGameController.labelFinishStat.setText("       Partie Terminer \n --------------------------\n"+this.getPlayerList().get(posPlayerWin).getPseudo()+"\nGagne la partie!!");
 					
 				System.out.println("--------Partie terminer -----------");
 					if(InterfaceUserController.styleCards.equals("pony"))deckStyleDigit = 1;

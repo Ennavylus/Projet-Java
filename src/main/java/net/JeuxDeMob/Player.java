@@ -56,7 +56,7 @@ public class Player {
 		int rand ;
 		int count;
 		do {
-			rand =new Random().nextInt(8);
+			rand =new Random().nextInt(11);
 			count = 0;
 			for(int i = 0; i<countComputer; i++) {
 				if(rand==previousSkin[i]) {

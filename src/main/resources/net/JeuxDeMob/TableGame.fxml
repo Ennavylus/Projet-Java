@@ -15,17 +15,17 @@
             <Image url="@backGround/79366986_503083353892436_3615691885693108224_n.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj1" fitHeight="336.0" fitWidth="214.0" layoutX="48.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj1" fitHeight="300.0" fitWidth="300.0" layoutX="48.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@joueur/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj2" fitHeight="308.0" fitWidth="188.0" layoutX="364.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj2" fitHeight="300.0" fitWidth="300.0" layoutX="364.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@joueur/7.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pnj3" fitHeight="306.0" fitWidth="223.0" layoutX="706.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pnj3" fitHeight="300.0" fitWidth="300.0" layoutX="666.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@joueur/6.png" />
          </image>

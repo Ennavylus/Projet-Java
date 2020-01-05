@@ -76,7 +76,7 @@ public class LogInController {
 				return;
 			}
 			String verif = res.getString("mdp");
-			if(verif.equals(passLog)) {
+			if(verif.equals(passLog)) { 
 				id= res.getInt("id");
 				System.out.println("merci momo");
 				if( res.getInt("admin")==1) {

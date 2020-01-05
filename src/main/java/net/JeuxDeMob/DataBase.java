@@ -14,8 +14,8 @@ public class DataBase {
 	
 	
 	private DataBase() {
-		String url = "jdbc:mysql://localhost/jeuxdumob?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	    String user = "Please enter your Databases UserName ", pswd = "Please enter your Databases Password ";
+		String url = "jdbc:mysql://localhost/**********?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	    String user = "*********", pswd = "*********";
 		try {
 			cnx = DriverManager.getConnection(url,user,pswd);
 			insertStatement = cnx.prepareStatement("INSERT INTO Utilisateur (Pseudo,mail,mdp,urlProfil, admin) VALUE(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
