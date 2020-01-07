@@ -155,7 +155,7 @@ public class ModifyUserController {
 				if(email.equals(res.getString("mail"))||email.length()<1)email = res.getString("mail");
 				if(pseudoLog.equals(res.getString("pseudo"))||pseudoLog.length()<1)pseudoLog = res.getString("pseudo");
 				if(passLog.equals(res.getString("mdp"))||passLog.length()<1)passLog = res.getString("mdp");
-				if(this.updateProfil()) urlProf = "prof/profilid"+LogInController.id+".jpg";
+				if(this.updateProfil()) urlProf = "prof/profilid"+LogInController.id+".png";
 				
 				DataBase.getInstance().updateMe(pseudoLog, email, passLog, urlProf);
 				App.setRoot("InterfaceUser");
@@ -180,7 +180,7 @@ public class ModifyUserController {
 	        if(url==null)return false;
 	        try {
 	        	fis = new FileInputStream(url);
-	        	fos = new FileOutputStream("C:\\Users\\ennav\\OneDrive\\Bureau\\WorkSpace\\JeuxProjetJava\\JeuxDeMob\\src\\main\\resources\\net\\JeuxDeMob\\prof\\profilid"+LogInController.id+".jpg") ; 
+	        	fos = new FileOutputStream("C:\\Users\\ennav\\OneDrive\\Bureau\\WorkSpace\\JeuxProjetJava\\JeuxDeMob\\src\\main\\resources\\net\\JeuxDeMob\\prof\\profilid"+LogInController.id+".png") ; 
 	        	BufferedInputStream bis = new BufferedInputStream(fis);
 	        	BufferedOutputStream bos = new BufferedOutputStream(fos);
 	        	int b=0;
