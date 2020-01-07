@@ -113,7 +113,8 @@ public class AdminController {
 	 * button for add user
 	 */
 	public void addUser() {
-		String pseudo = inputModify.getText();
+		listUser.getSelectionModel().clearSelection();
+		var pseudo = inputModify.getText();
 		if(pseudo.length()>2) {
 			var newUser = DataBase.getInstance().insertUtilisateur(pseudo, "A saisir", "123");
 			if(newUser == null) return;
