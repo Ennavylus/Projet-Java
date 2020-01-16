@@ -22,7 +22,7 @@ Voici mon projet Java pour le Callac Soft Collège Session 9
 ### Lien GitLab
  Rendez vous sur la page principale du projet, puis copiez l'Url
 
- <img src="imageReadme\clonegit.png" width="350">
+ <img src ="imageReadme\clonegit.png" width="350">
 
  
 ### Lancez ECLIPSE
@@ -38,18 +38,18 @@ Voici mon projet Java pour le Callac Soft Collège Session 9
 
  Sélectionnez ensuite Clone URL 
 
- <img src="imageReadme\importGitSelection.png" width="350">
+ <img src ="imageReadme\importGitSelection.png" width="350">
 
 Collez l'Url précédemment copiez dans la case Url,
 Renseignez egalement votre nom de compte et mot de passe de GitLab dans la partie Authentification puis next
 
-<img src="imageReadme\importUrl.png" width="350">
+<img src ="imageReadme\importUrl.png" width="350">
 
 Cliquez sur Next, ensuite
 
 Sélectionnez ensuite l'emplacement de téléchargement puis Next
 
-<img src="imageReadme\selectImportFile.png" width="350">
+<img src ="imageReadme\selectImportFile.png" width="350">
 
 Ensuite Next, et finish 
 
@@ -60,23 +60,23 @@ Allez donc dans le fichier DataBase.java
     - renseigner à la ligne 17 entre le "/" et le "?" le nom de votre base de données
     - ligne 18 renseigner dans user :  votre nom user de votre base de données et dans pwsd : votre mot de passe d'acces a la base de données 
 
-<img src="imageReadme\Changement bdd.png" height="450">
+<img src ="imageReadme\Changement bdd.png" height="450">
 
 
 Une fois tout ceci fait vous aller enfin pouvoir tester le projet, 
 Donc 
 Cliquez sur la petite fleche noir qui est à droite du premier run (premiere fleche verte) et selectionné run As, puis java Application
 
-<img src="imageReadme\runProject.png" height="200">
+<img src ="imageReadme\runProject.png" height="200">
 
 Cliquez sur Ok 
 
-<img src="imageReadme\okRun.png" height="300">
+<img src ="imageReadme\okRun.png" height="300">
 
 Puis bon Test !
 
 <p>
-<img src="imageReadme\goodGame.png" height="300">
+<img src ="imageReadme\goodGame.png" height="300">
 </p>
 
 PS :  pour avoir accès à l'interface admin connecter vous avec 
