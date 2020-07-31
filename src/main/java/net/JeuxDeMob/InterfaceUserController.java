@@ -2,9 +2,14 @@ package net.JeuxDeMob;
 
 
 import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
 import java.sql.*;
+import java.util.Random;
+
 import javafx.beans.property.*;
 import javafx.fxml.*;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.AnchorPane;
